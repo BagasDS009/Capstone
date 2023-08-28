@@ -1,0 +1,8 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Data Dokter Admin","As a admin i want to add data dokter - Valid","ERROR","2022-07-15T08:25:33.2260316+07:00[Asia/Bangkok]","0.0","15.57"
+"Data Dokter Admin","As a admin i want to edit data dokter - Valid","ERROR","2022-07-15T08:28:41.5166465+07:00[Asia/Bangkok]","0.0","17.86"
+"Data Pasien - Admin","As a admin i want to add data pasien (JK Laki-Laki) - Valid","ERROR","2022-07-15T08:32:11.6227804+07:00[Asia/Bangkok]","0.0","15.48"
+"Data Pasien - Admin","As a admin i want to add data pasien (JK Laki-Laki) - Kosong","ERROR","2022-07-15T08:32:27.1312496+07:00[Asia/Bangkok]","0.0","115.43"
+"Data Pasien - Admin","As a admin i want to edit data pasien (JK Perempuan) - Valid","ERROR","2022-07-15T08:37:14.9137706+07:00[Asia/Bangkok]","0.0","18.95"
+"Kelola jadwal - admin","As a admin i want to Add Manage Schedule Rawat Jalan","ERROR","2022-07-15T08:38:21.0957227+07:00[Asia/Bangkok]","0.0","15.37"
+"Kelola jadwal - admin","As a admin i want to Add Manage Schedule Rawat Biasa","ERROR","2022-07-15T08:38:36.4996624+07:00[Asia/Bangkok]","0.0","13.76"

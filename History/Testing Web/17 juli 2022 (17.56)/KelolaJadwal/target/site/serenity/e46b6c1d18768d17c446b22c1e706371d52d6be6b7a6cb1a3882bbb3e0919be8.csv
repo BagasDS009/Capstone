@@ -1,0 +1,8 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Kelola jadwal - admin","As a admin i want to View Manage Schedule","SUCCESS","2022-07-17T19:56:48.2486693+07:00[Asia/Bangkok]","0.0","40.67"
+"Kelola jadwal - admin","As a admin i want to search archive","SUCCESS","2022-07-17T19:57:28.9613535+07:00[Asia/Bangkok]","0.0","64.73"
+"Kelola jadwal - admin","As a admin i want to Add Manage Schedule Rawat Jalan","SUCCESS","2022-07-17T19:58:33.7258267+07:00[Asia/Bangkok]","0.0","52.04"
+"Kelola jadwal - admin","As a admin i want to Add Manage Schedule Rawat Biasa","SUCCESS","2022-07-17T19:59:25.8041595+07:00[Asia/Bangkok]","0.0","53.85"
+"Kelola jadwal - admin","As a admin i want to Add Manage Schedule Rawat Biasa - tidak ada tanggal","SUCCESS","2022-07-17T20:00:19.706313+07:00[Asia/Bangkok]","0.0","40.64"
+"Kelola jadwal - admin","As a admin i want to Add Manage Schedule Rawat Biasa - tidak ada perawat","SUCCESS","2022-07-17T20:01:00.4213191+07:00[Asia/Bangkok]","0.0","40.81"
+"Kelola jadwal - admin","As a admin i want to Add Manage Schedule Rawat Biasa - tidak ada perawat & tanggal","SUCCESS","2022-07-17T20:01:41.2646071+07:00[Asia/Bangkok]","0.0","39.83"

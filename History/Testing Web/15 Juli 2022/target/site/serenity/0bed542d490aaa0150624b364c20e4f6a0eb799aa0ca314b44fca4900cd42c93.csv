@@ -1,0 +1,4 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Data Dokter Admin","As a admin i want to view data dokter","SUCCESS","2022-07-15T15:12:23.6932599+07:00[Asia/Bangkok]","0.0","9.5"
+"Data Dokter Admin","As a admin i want to detail data dokter","SUCCESS","2022-07-15T15:12:33.2041087+07:00[Asia/Bangkok]","0.0","9.61"
+"Data Dokter Admin","As a admin i want to delete data dokter","SUCCESS","2022-07-15T15:18:40.374297+07:00[Asia/Bangkok]","0.0","20.43"

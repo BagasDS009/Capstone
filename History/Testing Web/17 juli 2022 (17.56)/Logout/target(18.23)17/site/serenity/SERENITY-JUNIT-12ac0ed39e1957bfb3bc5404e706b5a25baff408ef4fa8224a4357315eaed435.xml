@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><testsuite errors="0" failures="0" name="LogOut Acount - Admin" skipped="0" tests="2" time="79.28" timestamp="2022-07-17 07:28:07"><testcase name="As a admin I  Logout - Yes"/><testcase name="As a admin I Logout - No"/></testsuite>

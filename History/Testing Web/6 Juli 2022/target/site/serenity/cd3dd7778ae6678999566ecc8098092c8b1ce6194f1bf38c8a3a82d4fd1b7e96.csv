@@ -1,0 +1,3 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Delete Data Dokter - Admin","As a admin i want to delete data dokter - Yes","SUCCESS","2022-07-06T20:06:32.9378311+07:00[Asia/Bangkok]","0.0","10.17"
+"Delete Data Dokter - Admin","As a admin i want to delete data dokter - No","SUCCESS","2022-07-06T20:06:44.3101724+07:00[Asia/Bangkok]","0.0","8.31"

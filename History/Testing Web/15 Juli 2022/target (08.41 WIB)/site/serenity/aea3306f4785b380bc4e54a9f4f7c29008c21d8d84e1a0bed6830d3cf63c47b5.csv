@@ -1,0 +1,5 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Data Pasien - Admin","As a admin i want to view data pasien","SUCCESS","2022-07-15T08:31:52.4221505+07:00[Asia/Bangkok]","0.0","9.54"
+"Data Pasien - Admin","As a admin i want to detail data pasien","SUCCESS","2022-07-15T08:32:01.9884031+07:00[Asia/Bangkok]","0.0","9.6"
+"Data Pasien - Admin","As a admin i want to delete data pasien - No","SUCCESS","2022-07-15T08:37:44.572075+07:00[Asia/Bangkok]","0.0","9.82"
+"Data Pasien - Admin","As a admin i want to search data pasien","SUCCESS","2022-07-15T08:37:54.4033851+07:00[Asia/Bangkok]","0.0","18.38"

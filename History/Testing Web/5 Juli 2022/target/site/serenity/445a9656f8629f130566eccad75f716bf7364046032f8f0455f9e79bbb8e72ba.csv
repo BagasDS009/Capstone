@@ -1,0 +1,4 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Edit Data Pasien - Admin","As a admin i want to edit data pasien (JK Perempuan)","ERROR","2022-07-05T16:42:21.0869426+07:00[Asia/Bangkok]","0.0","189.43"
+"Edit Data Pasien - Admin","As a admin i want to edit data pasien (JK Laki-Laki)","SUCCESS","2022-07-05T16:45:30.5660662+07:00[Asia/Bangkok]","0.0","26.0"
+"Edit Data Pasien - Admin","As a admin i want to edit data pasien but not gander","SUCCESS","2022-07-05T16:45:56.6032359+07:00[Asia/Bangkok]","0.0","26.07"

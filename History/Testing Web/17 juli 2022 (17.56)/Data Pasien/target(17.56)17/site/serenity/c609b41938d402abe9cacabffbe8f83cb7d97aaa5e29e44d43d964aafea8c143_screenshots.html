@@ -1,0 +1,492 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Screenshots</title>
+
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+<link rel="apple-touch-icon" sizes="57x57" href="apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+<link rel="stylesheet" href="bootstrap-icons/font/bootstrap-icons.css"><!-- JQuery -->
+<script type="text/javascript" src="scripts/jquery-1.11.1.min.js"></script><!-- Required Stylesheets -->
+<link href="bootstrap-treeview/dist/bootstrap-treeview.min.css" rel="stylesheet">
+
+<!-- Required Javascript -->
+<script src="bootstrap-treeview/dist/bootstrap-treeview.min.js"></script><!-- DataTables -->
+<link type="text/css" href="datatables/1.11.3/datatables.min.css" rel="stylesheet" />
+<script type="text/javascript" src="datatables/1.11.3/datatables.min.js"></script>
+<script type="text/javascript" src="datatables/1.11.3/time-elapsed-dhms.js"></script>
+
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<script src="bootstrap/js/bootstrap.min.js"></script>
+
+
+<script>
+    jQuery.fn.dataTable.ext.type.order['time-elapsed-dhms-pre'] = function(data) {
+
+        var matches = data.match(/^(\d+(?:\.\d+)?)\s*([a-z]+)/i);
+        var multipliers = {
+            ms: 1,
+            s: 1000,
+            m: 60000,
+            h: 3600000,
+            d: 86400000
+        };
+
+        if (matches) {
+            var multiplier = multipliers[matches[2].toLowerCase()];
+            return parseFloat(matches[1]) * multiplier;
+        } else {
+            return -1;
+        };
+    };
+</script>
+<link rel="stylesheet" href="css/core.css"/>
+<link rel="stylesheet" href="css/link.css"/>
+<link type="text/css" media="screen" href="css/screen.css" rel="Stylesheet"/>
+<!--CHART.JS-->
+<script src="chartjs/chart.js"></script>
+<script src="chartjs/chartjs-plugin-datalabels@2.0.0"></script>
+<script src="chartjs/patternomaly.min.js"></script>
+<script>
+    // Register the plugin to all charts:
+    Chart.register(ChartDataLabels);
+</script>
+<!-- Nivo Slider -->
+<link rel="stylesheet" href="nivo-slider/3.2/nivo-slider.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="nivo-slider/3.2/themes/default/default.css" type="text/css" media="screen" />
+<script src="nivo-slider/3.2/jquery.nivo.slider.pack.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+
+        function getUrlVars() {
+            var vars = {};
+            var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
+                vars[key] = value;
+            });
+            return vars;
+        }
+
+        var screenshotIndex = getUrlVars()["screenshot"];
+
+        $(window).load(function () {
+            $('#slider').nivoSlider({
+                startSlide: screenshotIndex,
+                effect: 'fade',
+                animSpeed: 200,
+                manualAdvance: true
+            });
+        });
+
+        $(window).keydown(function(e) {
+            switch(e.which) {
+                case 37:
+                    $('a.nivo-prevNav').click();
+                    break;
+                case 39:
+                    $('a.nivo-nextNav').click();
+                    break;
+            }
+        });
+    </script>
+
+</head>
+
+<body>
+<div id="topheader">
+    <div id="topbanner">
+        <div id="logo"><a href="index.html"><img src="images/serenity-logo.png" border="0"/></a></div>
+        <div id="projectname-banner" style="float:right">
+            <span class="projectname">
+                <span class="projecttitle"></span>
+                <span class="projectsubtitle"></span>
+            </span>
+        </div>
+    </div>
+</div>
+
+<div class="middlecontent">
+    <div id="contenttop">
+        <div class="middlebg">
+            <span class="breadcrumbs">
+                <a href="index.html">Home</a>
+                > <span class="truncate-40"><a
+                    href="d6fc19f41ea52c3212d8ad9643cbe388cc1199f116298ec950d24e6f51428723.html">Data Pasien - Admin</a></span>
+                > <span class="truncate-60"><a
+                    href="c609b41938d402abe9cacabffbe8f83cb7d97aaa5e29e44d43d964aafea8c143.html">As a admin i want to edit data pasien (JK Perempuan) - Invalid </a></span>
+                > Screenshots
+            </span>
+        </div>
+        <div class="rightbg"></div>
+    </div>
+
+    <div class="clr"></div>
+
+    <!--/* starts second table*/-->
+<div>
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#"><i class="bi bi-journal-check"></i> Overall Test Results</a>
+        </li>
+        <li >
+            <a href="capabilities.html"><i class="bi bi-journal-text"></i> Requirements</a>
+        </li>
+        <li >
+            <a href="576946480b52ad056d6f5bddf874399c83582ecf90963cc074a14c70580e7d9f.html"><i class="bi bi-chat-text"></i> Features</a>
+        </li>
+    </ul>
+    <span class="date-and-time"><a href="build-info.html"><i class="bi bi-info-circle"></i></a> Report generated 17-07-2022 18:33</span>
+    <br style="clear:left"/>
+</div>
+
+    <div class="clr"></div>
+
+
+    <div id="contentbody">
+        <div class="titlebar">
+            <div class="story-title">
+                <table class="outcome-header">
+                    <tr>
+                        <td>
+                            <div>
+                                <h3 class="discreet-story-header">
+                                    <i class="fs-2 bi bi-chat-left-quote large-icon"></i>
+                                    <span class="story-header-title">Data Pasien - Admin </span>
+                                    <span class="badge tag-badge" style="">Feature</span>
+                                </h3>
+
+                                <div class="discreet-requirement-narrative-title">
+                                
+                                </div>
+                            </div>
+
+                        </td>
+                        <td valign="top" align="right">
+                            <p class="tag">
+                                <span class="badge tag-badge" style="background:default;"
+                                    <i class="bi bi-tag-fill"></i>&nbsp;<a class="tagLink" style="background:default;" href="047918b6fc1eb9fbb18c7f58f5b7155be529c371010ef67f1d3fc8dc9ab8c7be.html">Edit Patient Data Invalid
+                                    (tag)</a>
+                                </span>
+                            </p>
+                            <p class="tag">
+                                <span class="badge tag-badge" style="background:default;"
+                                    <i class="bi bi-tag-fill"></i>&nbsp;<a class="tagLink" style="background:default;" href="cf233526645aaafd10ff70f23cdad002b2e17f669b73c317d3742ffc48ce3e35.html">Data Pasien111
+                                    (tag)</a>
+                                </span>
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="story-title">
+                <table class="outcome-header">
+                    <tr>
+                        <td colspan="2" class="test-title-bar">
+                            <span class="outcome-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon fa-2x' title='SUCCESS'></i></a></span>
+                            <span class="test-case-title">
+                                <span class="success-color">As a admin i want to edit data pasien (JK Perempuan) - Invalid
+                                    <span class="related-issue-title"></span>
+                                </span>
+                            </span>
+
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="clr"></div>
+
+    <div class="story-title">
+        <h3>Scenario:</h3>
+        <div class="scenario">Given Open login page<br>And I input "&lt;email&gt;" login email valid<br>And I input "&lt;password&gt;" login password valid<br>And I click button login<br>And Login validation invalid<br>When Click button data pasien<br>And Click Detail Patient data<br>And Valid data detail pasien<br>And Click button edit profil<br>Then I input edit "&lt;namalengkap&gt;" "&lt;nik&gt;" "&lt;usia&gt;" "&lt;nomortelepon&gt;" "&lt;alamat&gt;" patient<br>And I click button jenis kelamin perempuan<br>And Click button simpan<br>And Validate add error messenger "&lt;text&gt;" Pasien</div>
+    </div>
+
+    <div id="beforetable"></div>
+    <div id="contenttilttle">
+        <div class="slider-wrapper theme-default">
+            <div id="slider">
+                <img src="c65c07b9d549f0150fc7ea8f09c8ca9374cbbe358feed673ec932afe515063d7.png" title=" 1: As a admin i want to edit data pasien (JK Perempuan) - Invalid ({email=admin, password=admin123, namalengkap=56712, nik=11221212, usia=1, nomortelepon=jngasjgxbba, alamat=970194371, text=})" width="1034"/>
+                <img src="c65c07b9d549f0150fc7ea8f09c8ca9374cbbe358feed673ec932afe515063d7.png" title=" Given Open login page" width="1034"/>
+                <img src="c65c07b9d549f0150fc7ea8f09c8ca9374cbbe358feed673ec932afe515063d7.png" title=" Open login" width="1034"/>
+                <img src="c65c07b9d549f0150fc7ea8f09c8ca9374cbbe358feed673ec932afe515063d7.png" title=" Given Open login page (completed)" width="1034"/>
+                <img src="c65c07b9d549f0150fc7ea8f09c8ca9374cbbe358feed673ec932afe515063d7.png" title=" And I input &quot;admin&quot; login email valid" width="1034"/>
+                <img src="8080b4670bf444242645dd2c06045b10cd0b1abfdf7e5cda118e4efca8cc30b6.png" title=" And I input &quot;admin&quot; login email valid (completed)" width="1034"/>
+                <img src="8080b4670bf444242645dd2c06045b10cd0b1abfdf7e5cda118e4efca8cc30b6.png" title=" And I input &quot;admin123&quot; login password valid" width="1034"/>
+                <img src="f684e1524ced0278b0b6c6b37709a7cbfb8281aeb576b04a4743fda17448b798.png" title=" Input password login: admin123" width="1034"/>
+                <img src="44fa0aa493cf3a3837a7fab79c30bded8f584eda85d2cfd055a7ef5b4e3f0a4a.png" title=" Input password login: admin123 (completed)" width="1034"/>
+                <img src="44fa0aa493cf3a3837a7fab79c30bded8f584eda85d2cfd055a7ef5b4e3f0a4a.png" title=" And I input &quot;admin123&quot; login password valid (completed)" width="1034"/>
+                <img src="44fa0aa493cf3a3837a7fab79c30bded8f584eda85d2cfd055a7ef5b4e3f0a4a.png" title=" And I click button login" width="1034"/>
+                <img src="44fa0aa493cf3a3837a7fab79c30bded8f584eda85d2cfd055a7ef5b4e3f0a4a.png" title=" Click button login" width="1034"/>
+                <img src="d35b91ce3d07a9fee4a431adcd1b0719dc7cb4a166e6b1b6f49fd9899092a5f7.png" title=" Click button login (completed)" width="1034"/>
+                <img src="fd3cb8c9b8b41bb74533453b421164b94be5ff2ded93ab8c17e171eabc38121b.png" title=" And I click button login (completed)" width="1034"/>
+                <img src="fd3cb8c9b8b41bb74533453b421164b94be5ff2ded93ab8c17e171eabc38121b.png" title=" And Login validation invalid" width="1034"/>
+                <img src="163e386af0b12517552a74a3d5043b94e8c0f9215c0f21d464e3b04d27a0859d.png" title=" Click button error OK" width="1034"/>
+                <img src="018d44491641fd0a191a322c7be10217d033b681e8eddfb0e9dbf4ae3b4dbc64.png" title=" Click button error OK (completed)" width="1034"/>
+                <img src="018d44491641fd0a191a322c7be10217d033b681e8eddfb0e9dbf4ae3b4dbc64.png" title=" And Login validation invalid (completed)" width="1034"/>
+                <img src="018d44491641fd0a191a322c7be10217d033b681e8eddfb0e9dbf4ae3b4dbc64.png" title=" When Click button data pasien" width="1034"/>
+                <img src="e3902e4e6d497170d59aa0c0c2930d955492166dca27ad580f2b08c08bf103aa.png" title=" Click button data pasien" width="1034"/>
+                <img src="43be8a5b80dbc797d2661564ee5626e2015d03c8d45505eec908b6c8cd0855dc.png" title=" Click button data pasien (completed)" width="1034"/>
+                <img src="43be8a5b80dbc797d2661564ee5626e2015d03c8d45505eec908b6c8cd0855dc.png" title=" When Click button data pasien (completed)" width="1034"/>
+                <img src="43be8a5b80dbc797d2661564ee5626e2015d03c8d45505eec908b6c8cd0855dc.png" title=" And Click Detail Patient data" width="1034"/>
+                <img src="95e6a444470ecae8564c52a075b0c243e5bbc197b9dfa2b462daad25201f7072.png" title=" Click button detail" width="1034"/>
+                <img src="d4ce16726ef92d2068c95d8cece4a61e92fb601e5ccd899b915b5708e6c549f3.png" title=" Click button detail (completed)" width="1034"/>
+                <img src="d4ce16726ef92d2068c95d8cece4a61e92fb601e5ccd899b915b5708e6c549f3.png" title=" And Click Detail Patient data (completed)" width="1034"/>
+                <img src="d4ce16726ef92d2068c95d8cece4a61e92fb601e5ccd899b915b5708e6c549f3.png" title=" And Valid data detail pasien" width="1034"/>
+                <img src="61730b553755efc16834da003fa24b4e8b8047554305c4ae560b6e6f81465e0a.png" title=" Check valid data pasien" width="1034"/>
+                <img src="61730b553755efc16834da003fa24b4e8b8047554305c4ae560b6e6f81465e0a.png" title=" Check valid data pasien (completed)" width="1034"/>
+                <img src="61730b553755efc16834da003fa24b4e8b8047554305c4ae560b6e6f81465e0a.png" title=" And Valid data detail pasien (completed)" width="1034"/>
+                <img src="61730b553755efc16834da003fa24b4e8b8047554305c4ae560b6e6f81465e0a.png" title=" And Click button edit profil" width="1034"/>
+                <img src="783f65bc43a11aa75c46e00e8b1976fbd5b9e161df45c72dfe094a592790b6de.png" title=" Click button edit data pasien" width="1034"/>
+                <img src="fb16922522b5581995838576e04fbc5bc027831748b87b2f7141b7ead87e7cff.png" title=" Click button edit data pasien (completed)" width="1034"/>
+                <img src="fb16922522b5581995838576e04fbc5bc027831748b87b2f7141b7ead87e7cff.png" title=" And Click button edit profil (completed)" width="1034"/>
+                <img src="fb16922522b5581995838576e04fbc5bc027831748b87b2f7141b7ead87e7cff.png" title=" Then I input edit &quot;56712&quot; &quot;11221212&quot; &quot;1&quot; &quot;jngasjgxbba&quot; &quot;970194371&quot; patient" width="1034"/>
+                <img src="364adc272a0cf0885e736d5f5cc9af85ed715302a25b56e59b2a626adb4305fe.png" title=" Input data pasien edit: 56712, 11221212, 1, jngasjgxbba, 970194371" width="1034"/>
+                <img src="4255587c0e366fb18133ae5d82ddeacbe2e5e2272fe96e39f89addc915b2718a.png" title=" Input data pasien edit: 56712, 11221212, 1, jngasjgxbba, 970194371 (completed)" width="1034"/>
+                <img src="4255587c0e366fb18133ae5d82ddeacbe2e5e2272fe96e39f89addc915b2718a.png" title=" Then I input edit &quot;56712&quot; &quot;11221212&quot; &quot;1&quot; &quot;jngasjgxbba&quot; &quot;970194371&quot; patient (completed)" width="1034"/>
+                <img src="4255587c0e366fb18133ae5d82ddeacbe2e5e2272fe96e39f89addc915b2718a.png" title=" And I click button jenis kelamin perempuan" width="1034"/>
+                <img src="4255587c0e366fb18133ae5d82ddeacbe2e5e2272fe96e39f89addc915b2718a.png" title=" Click perempuan" width="1034"/>
+                <img src="9d1257cf11166099f7dfd38d543d948ce55c19bd6aa8a002cddd5cabaf0d9585.png" title=" Click perempuan (completed)" width="1034"/>
+                <img src="9d1257cf11166099f7dfd38d543d948ce55c19bd6aa8a002cddd5cabaf0d9585.png" title=" And I click button jenis kelamin perempuan (completed)" width="1034"/>
+                <img src="9d1257cf11166099f7dfd38d543d948ce55c19bd6aa8a002cddd5cabaf0d9585.png" title=" And Click button simpan" width="1034"/>
+                <img src="9d1257cf11166099f7dfd38d543d948ce55c19bd6aa8a002cddd5cabaf0d9585.png" title=" Click button save" width="1034"/>
+                <img src="4dd42a061cba633b1b40e78d4e6708beb95084904ff77cb91ff5d5b58481208d.png" title=" Click button save (completed)" width="1034"/>
+                <img src="fe3933894386159ee0da783772e85378566cff7fe8d2e60c47f2a78ad0162036.png" title=" And Click button simpan (completed)" width="1034"/>
+                <img src="fe3933894386159ee0da783772e85378566cff7fe8d2e60c47f2a78ad0162036.png" title=" And Validate add error messenger &quot;&quot; Pasien" width="1034"/>
+                <img src="2323f17780b7da6bd9155fdb2b4299c10195c2eefc35bf5d2ca3866f8850906c.png" title=" Validate text messeger dokter: " width="1034"/>
+                <img src="f888885dc531be1b44eec1ab1fedb3092f0da69d6bddfcbe4a97be4e98453a95.png" title=" Validate text messeger dokter:  (completed)" width="1034"/>
+                <img src="f888885dc531be1b44eec1ab1fedb3092f0da69d6bddfcbe4a97be4e98453a95.png" title=" 1: As a admin i want to edit data pasien (JK Perempuan) - Invalid ({email=admin, password=admin123, namalengkap=56712, nik=11221212, usia=1, nomortelepon=jngasjgxbba, alamat=970194371, text=})" width="1034"/>
+                <img src="f888885dc531be1b44eec1ab1fedb3092f0da69d6bddfcbe4a97be4e98453a95.png" title=" And Validate add error messenger &quot;&quot; Pasien (completed)" width="1034"/>
+                <img src="d122c364c40ece9db0ad32cd97c3fcf63e95ba606118dda8d3e5a1d2b8235ce2.png" title=" 2: As a admin i want to edit data pasien (JK Perempuan) - Invalid ({email=admin, password=admin123, namalengkap=56712, nik=1234567891234567, usia=20, nomortelepon=01294657612, alamat=perumahan, text=hanya mengandung huruf})" width="1034"/>
+                <img src="d122c364c40ece9db0ad32cd97c3fcf63e95ba606118dda8d3e5a1d2b8235ce2.png" title=" Given Open login page" width="1034"/>
+                <img src="d122c364c40ece9db0ad32cd97c3fcf63e95ba606118dda8d3e5a1d2b8235ce2.png" title=" Open login" width="1034"/>
+                <img src="d122c364c40ece9db0ad32cd97c3fcf63e95ba606118dda8d3e5a1d2b8235ce2.png" title=" Given Open login page (completed)" width="1034"/>
+                <img src="d122c364c40ece9db0ad32cd97c3fcf63e95ba606118dda8d3e5a1d2b8235ce2.png" title=" And I input &quot;admin&quot; login email valid" width="1034"/>
+                <img src="93df20195d3751dea78ac30a105f84d37c410e0341f58ded6fb231b5b47402e6.png" title=" And I input &quot;admin&quot; login email valid (completed)" width="1034"/>
+                <img src="93df20195d3751dea78ac30a105f84d37c410e0341f58ded6fb231b5b47402e6.png" title=" And I input &quot;admin123&quot; login password valid" width="1034"/>
+                <img src="f684e1524ced0278b0b6c6b37709a7cbfb8281aeb576b04a4743fda17448b798.png" title=" Input password login: admin123" width="1034"/>
+                <img src="44fa0aa493cf3a3837a7fab79c30bded8f584eda85d2cfd055a7ef5b4e3f0a4a.png" title=" Input password login: admin123 (completed)" width="1034"/>
+                <img src="44fa0aa493cf3a3837a7fab79c30bded8f584eda85d2cfd055a7ef5b4e3f0a4a.png" title=" And I input &quot;admin123&quot; login password valid (completed)" width="1034"/>
+                <img src="44fa0aa493cf3a3837a7fab79c30bded8f584eda85d2cfd055a7ef5b4e3f0a4a.png" title=" And I click button login" width="1034"/>
+                <img src="44fa0aa493cf3a3837a7fab79c30bded8f584eda85d2cfd055a7ef5b4e3f0a4a.png" title=" Click button login" width="1034"/>
+                <img src="c01b6361c2251e6a840427ed88176b821df9c32b1167449c65e587fbbce5976d.png" title=" Click button login (completed)" width="1034"/>
+                <img src="b6f0904714cfdad7aeb9a4a44c6a38982cf2f0fba5bd28c7c2cb76bcd102dc5e.png" title=" And I click button login (completed)" width="1034"/>
+                <img src="b6f0904714cfdad7aeb9a4a44c6a38982cf2f0fba5bd28c7c2cb76bcd102dc5e.png" title=" And Login validation invalid" width="1034"/>
+                <img src="163e386af0b12517552a74a3d5043b94e8c0f9215c0f21d464e3b04d27a0859d.png" title=" Click button error OK" width="1034"/>
+                <img src="ef01aaf4d0de5b90709510340d14d85a0a29d2f3f75c79ee4c315163452cd1b3.png" title=" Click button error OK (completed)" width="1034"/>
+                <img src="ef01aaf4d0de5b90709510340d14d85a0a29d2f3f75c79ee4c315163452cd1b3.png" title=" And Login validation invalid (completed)" width="1034"/>
+                <img src="ef01aaf4d0de5b90709510340d14d85a0a29d2f3f75c79ee4c315163452cd1b3.png" title=" When Click button data pasien" width="1034"/>
+                <img src="e3902e4e6d497170d59aa0c0c2930d955492166dca27ad580f2b08c08bf103aa.png" title=" Click button data pasien" width="1034"/>
+                <img src="54a63ed0ce9c2440efb5b6b1d33b1008e6cdebb43124bd8289c747a504033900.png" title=" Click button data pasien (completed)" width="1034"/>
+                <img src="54a63ed0ce9c2440efb5b6b1d33b1008e6cdebb43124bd8289c747a504033900.png" title=" When Click button data pasien (completed)" width="1034"/>
+                <img src="54a63ed0ce9c2440efb5b6b1d33b1008e6cdebb43124bd8289c747a504033900.png" title=" And Click Detail Patient data" width="1034"/>
+                <img src="addaf5ec6239e0d3e4425671756968a7a7455f25f8897a214886f8eb6a377d89.png" title=" Click button detail" width="1034"/>
+                <img src="688743cd3f40d3990764f63bbe09ec778421f2669d841d5802e4fcd61e599575.png" title=" Click button detail (completed)" width="1034"/>
+                <img src="688743cd3f40d3990764f63bbe09ec778421f2669d841d5802e4fcd61e599575.png" title=" And Click Detail Patient data (completed)" width="1034"/>
+                <img src="688743cd3f40d3990764f63bbe09ec778421f2669d841d5802e4fcd61e599575.png" title=" And Valid data detail pasien" width="1034"/>
+                <img src="0ebc5218cd6f263e7cc0cda80128ff8945c79744f9cc3b38c9a4eb570f12b296.png" title=" Check valid data pasien" width="1034"/>
+                <img src="0ebc5218cd6f263e7cc0cda80128ff8945c79744f9cc3b38c9a4eb570f12b296.png" title=" Check valid data pasien (completed)" width="1034"/>
+                <img src="0ebc5218cd6f263e7cc0cda80128ff8945c79744f9cc3b38c9a4eb570f12b296.png" title=" And Valid data detail pasien (completed)" width="1034"/>
+                <img src="0ebc5218cd6f263e7cc0cda80128ff8945c79744f9cc3b38c9a4eb570f12b296.png" title=" And Click button edit profil" width="1034"/>
+                <img src="cf0121d287a9252e4650dd0820ea812163b4d822f5969ae778b71fdfa0493cef.png" title=" Click button edit data pasien" width="1034"/>
+                <img src="b63f11376674381b7b232b59d11d796dc52d17ca0f0b5129264b084945625783.png" title=" Click button edit data pasien (completed)" width="1034"/>
+                <img src="b63f11376674381b7b232b59d11d796dc52d17ca0f0b5129264b084945625783.png" title=" And Click button edit profil (completed)" width="1034"/>
+                <img src="b63f11376674381b7b232b59d11d796dc52d17ca0f0b5129264b084945625783.png" title=" Then I input edit &quot;56712&quot; &quot;1234567891234567&quot; &quot;20&quot; &quot;01294657612&quot; &quot;perumahan&quot; patient" width="1034"/>
+                <img src="8eddcc4cb991fd84f8d02410bd2bb7bfb2f6f0429be29a9b90c941dec631cb4a.png" title=" Input data pasien edit: 56712, 1234567891234567, 20, 01294657612, perumahan" width="1034"/>
+                <img src="2c9a111720c4697c2c7d1e9f101eb59a88b4266f633a4f762bf6015deb3eac19.png" title=" Input data pasien edit: 56712, 1234567891234567, 20, 01294657612, perumahan (completed)" width="1034"/>
+                <img src="2c9a111720c4697c2c7d1e9f101eb59a88b4266f633a4f762bf6015deb3eac19.png" title=" Then I input edit &quot;56712&quot; &quot;1234567891234567&quot; &quot;20&quot; &quot;01294657612&quot; &quot;perumahan&quot; patient (completed)" width="1034"/>
+                <img src="2c9a111720c4697c2c7d1e9f101eb59a88b4266f633a4f762bf6015deb3eac19.png" title=" And I click button jenis kelamin perempuan" width="1034"/>
+                <img src="2c9a111720c4697c2c7d1e9f101eb59a88b4266f633a4f762bf6015deb3eac19.png" title=" Click perempuan" width="1034"/>
+                <img src="1416d8945b82c0b117b197791325aa566ae7dd87fa99785e210a2ecb8a0d9942.png" title=" Click perempuan (completed)" width="1034"/>
+                <img src="1416d8945b82c0b117b197791325aa566ae7dd87fa99785e210a2ecb8a0d9942.png" title=" And I click button jenis kelamin perempuan (completed)" width="1034"/>
+                <img src="1416d8945b82c0b117b197791325aa566ae7dd87fa99785e210a2ecb8a0d9942.png" title=" And Click button simpan" width="1034"/>
+                <img src="1416d8945b82c0b117b197791325aa566ae7dd87fa99785e210a2ecb8a0d9942.png" title=" Click button save" width="1034"/>
+                <img src="bfb4b6d9d90f48ffdacba5cb4b9b7aec5383b0102ec1f2cf28951edb2ce7545d.png" title=" Click button save (completed)" width="1034"/>
+                <img src="92a6d73c994faf0bc191fbadc3ca319570e491627c2a4216c4d15e3a5bf9c403.png" title=" And Click button simpan (completed)" width="1034"/>
+                <img src="92a6d73c994faf0bc191fbadc3ca319570e491627c2a4216c4d15e3a5bf9c403.png" title=" And Validate add error messenger &quot;hanya mengandung huruf&quot; Pasien" width="1034"/>
+                <img src="571f530f04956267453f39f1a6af7623e1c56ecbfcfefc985c5ab7b359406b2c.png" title=" Validate text messeger dokter: hanya mengandung huruf" width="1034"/>
+                <img src="571f530f04956267453f39f1a6af7623e1c56ecbfcfefc985c5ab7b359406b2c.png" title=" Validate text messeger dokter: hanya mengandung huruf (completed)" width="1034"/>
+                <img src="571f530f04956267453f39f1a6af7623e1c56ecbfcfefc985c5ab7b359406b2c.png" title=" 2: As a admin i want to edit data pasien (JK Perempuan) - Invalid ({email=admin, password=admin123, namalengkap=56712, nik=1234567891234567, usia=20, nomortelepon=01294657612, alamat=perumahan, text=hanya mengandung huruf})" width="1034"/>
+                <img src="571f530f04956267453f39f1a6af7623e1c56ecbfcfefc985c5ab7b359406b2c.png" title=" And Validate add error messenger &quot;hanya mengandung huruf&quot; Pasien (completed)" width="1034"/>
+                <img src="d122c364c40ece9db0ad32cd97c3fcf63e95ba606118dda8d3e5a1d2b8235ce2.png" title=" 3: As a admin i want to edit data pasien (JK Perempuan) - Invalid ({email=admin, password=admin123, namalengkap=Bagas, nik=11221212, usia=20, nomortelepon=01294657612, alamat=perumahan, text=nik perlu 16 digit})" width="1034"/>
+                <img src="d122c364c40ece9db0ad32cd97c3fcf63e95ba606118dda8d3e5a1d2b8235ce2.png" title=" Given Open login page" width="1034"/>
+                <img src="d122c364c40ece9db0ad32cd97c3fcf63e95ba606118dda8d3e5a1d2b8235ce2.png" title=" Open login" width="1034"/>
+                <img src="d122c364c40ece9db0ad32cd97c3fcf63e95ba606118dda8d3e5a1d2b8235ce2.png" title=" Given Open login page (completed)" width="1034"/>
+                <img src="d122c364c40ece9db0ad32cd97c3fcf63e95ba606118dda8d3e5a1d2b8235ce2.png" title=" And I input &quot;admin&quot; login email valid" width="1034"/>
+                <img src="93df20195d3751dea78ac30a105f84d37c410e0341f58ded6fb231b5b47402e6.png" title=" And I input &quot;admin&quot; login email valid (completed)" width="1034"/>
+                <img src="93df20195d3751dea78ac30a105f84d37c410e0341f58ded6fb231b5b47402e6.png" title=" And I input &quot;admin123&quot; login password valid" width="1034"/>
+                <img src="f684e1524ced0278b0b6c6b37709a7cbfb8281aeb576b04a4743fda17448b798.png" title=" Input password login: admin123" width="1034"/>
+                <img src="44fa0aa493cf3a3837a7fab79c30bded8f584eda85d2cfd055a7ef5b4e3f0a4a.png" title=" Input password login: admin123 (completed)" width="1034"/>
+                <img src="44fa0aa493cf3a3837a7fab79c30bded8f584eda85d2cfd055a7ef5b4e3f0a4a.png" title=" And I input &quot;admin123&quot; login password valid (completed)" width="1034"/>
+                <img src="44fa0aa493cf3a3837a7fab79c30bded8f584eda85d2cfd055a7ef5b4e3f0a4a.png" title=" And I click button login" width="1034"/>
+                <img src="44fa0aa493cf3a3837a7fab79c30bded8f584eda85d2cfd055a7ef5b4e3f0a4a.png" title=" Click button login" width="1034"/>
+                <img src="ae461d008f440d86030961e5c92cb12e95f8979a5b329efcf591fcf58f1f9270.png" title=" Click button login (completed)" width="1034"/>
+                <img src="860d4e5d13f8b7721a3d3e9aac8b0a4c66ca0c3a4a7474cef11bc8b474b2af9d.png" title=" And I click button login (completed)" width="1034"/>
+                <img src="860d4e5d13f8b7721a3d3e9aac8b0a4c66ca0c3a4a7474cef11bc8b474b2af9d.png" title=" And Login validation invalid" width="1034"/>
+                <img src="163e386af0b12517552a74a3d5043b94e8c0f9215c0f21d464e3b04d27a0859d.png" title=" Click button error OK" width="1034"/>
+                <img src="503fbb5dc0efc1da668f778192c72d4249b80666ed274cd9265372894a7fcb78.png" title=" Click button error OK (completed)" width="1034"/>
+                <img src="503fbb5dc0efc1da668f778192c72d4249b80666ed274cd9265372894a7fcb78.png" title=" And Login validation invalid (completed)" width="1034"/>
+                <img src="503fbb5dc0efc1da668f778192c72d4249b80666ed274cd9265372894a7fcb78.png" title=" When Click button data pasien" width="1034"/>
+                <img src="e3902e4e6d497170d59aa0c0c2930d955492166dca27ad580f2b08c08bf103aa.png" title=" Click button data pasien" width="1034"/>
+                <img src="465df177015720e37431ec0466ba029e560a4e2b4eb2df005ad8bdd11a34cc7f.png" title=" Click button data pasien (completed)" width="1034"/>
+                <img src="465df177015720e37431ec0466ba029e560a4e2b4eb2df005ad8bdd11a34cc7f.png" title=" When Click button data pasien (completed)" width="1034"/>
+                <img src="465df177015720e37431ec0466ba029e560a4e2b4eb2df005ad8bdd11a34cc7f.png" title=" And Click Detail Patient data" width="1034"/>
+                <img src="addaf5ec6239e0d3e4425671756968a7a7455f25f8897a214886f8eb6a377d89.png" title=" Click button detail" width="1034"/>
+                <img src="45bea020b361125d1edd01ad363eb41f90ec13315f8b31b5987cf83435120413.png" title=" Click button detail (completed)" width="1034"/>
+                <img src="45bea020b361125d1edd01ad363eb41f90ec13315f8b31b5987cf83435120413.png" title=" And Click Detail Patient data (completed)" width="1034"/>
+                <img src="45bea020b361125d1edd01ad363eb41f90ec13315f8b31b5987cf83435120413.png" title=" And Valid data detail pasien" width="1034"/>
+                <img src="0ebc5218cd6f263e7cc0cda80128ff8945c79744f9cc3b38c9a4eb570f12b296.png" title=" Check valid data pasien" width="1034"/>
+                <img src="0ebc5218cd6f263e7cc0cda80128ff8945c79744f9cc3b38c9a4eb570f12b296.png" title=" And Valid data detail pasien" width="1034"/>
+                <img src="0ebc5218cd6f263e7cc0cda80128ff8945c79744f9cc3b38c9a4eb570f12b296.png" title=" Check valid data pasien (completed)" width="1034"/>
+                <img src="0ebc5218cd6f263e7cc0cda80128ff8945c79744f9cc3b38c9a4eb570f12b296.png" title=" And Click button edit profil" width="1034"/>
+                <img src="d81c95d206d3a9fa218f83a316cbdca7c0c350957244db7b889092de45e9a30e.png" title=" Click button edit data pasien" width="1034"/>
+                <img src="fbc2703768b002303e129f5d05efef8ad37d4e849db10d15bb01118ee73c80a6.png" title=" Click button edit data pasien (completed)" width="1034"/>
+                <img src="fbc2703768b002303e129f5d05efef8ad37d4e849db10d15bb01118ee73c80a6.png" title=" And Click button edit profil (completed)" width="1034"/>
+                <img src="fbc2703768b002303e129f5d05efef8ad37d4e849db10d15bb01118ee73c80a6.png" title=" Then I input edit &quot;Bagas&quot; &quot;11221212&quot; &quot;20&quot; &quot;01294657612&quot; &quot;perumahan&quot; patient" width="1034"/>
+                <img src="44da6b97e39b00ca0fa2623cb76e1f5cc5e25e8a7c713590c28bcf34493751f0.png" title=" Input data pasien edit: Bagas, 11221212, 20, 01294657612, perumahan" width="1034"/>
+                <img src="a34816b1717a7cfa175838534aa263dd61656e4bcd6ab188246557dc500d6821.png" title=" Input data pasien edit: Bagas, 11221212, 20, 01294657612, perumahan (completed)" width="1034"/>
+                <img src="a34816b1717a7cfa175838534aa263dd61656e4bcd6ab188246557dc500d6821.png" title=" Then I input edit &quot;Bagas&quot; &quot;11221212&quot; &quot;20&quot; &quot;01294657612&quot; &quot;perumahan&quot; patient (completed)" width="1034"/>
+                <img src="a34816b1717a7cfa175838534aa263dd61656e4bcd6ab188246557dc500d6821.png" title=" And I click button jenis kelamin perempuan" width="1034"/>
+                <img src="a34816b1717a7cfa175838534aa263dd61656e4bcd6ab188246557dc500d6821.png" title=" Click perempuan" width="1034"/>
+                <img src="6a62acc25f7d17301d665d98f3fefa53859604971eca48abcd19b66f746c8072.png" title=" Click perempuan (completed)" width="1034"/>
+                <img src="6a62acc25f7d17301d665d98f3fefa53859604971eca48abcd19b66f746c8072.png" title=" And I click button jenis kelamin perempuan (completed)" width="1034"/>
+                <img src="6a62acc25f7d17301d665d98f3fefa53859604971eca48abcd19b66f746c8072.png" title=" And Click button simpan" width="1034"/>
+                <img src="6a62acc25f7d17301d665d98f3fefa53859604971eca48abcd19b66f746c8072.png" title=" Click button save" width="1034"/>
+                <img src="b043cede1c9535d75144cc12ed1bdb87ebcc9bdd5f468f6207c2ce885ea9db7b.png" title=" Click button save (completed)" width="1034"/>
+                <img src="bcc59be4f91341d7e69891af0dd503296375fb3a3fbe3efc7391954a46165e3f.png" title=" And Click button simpan (completed)" width="1034"/>
+                <img src="bcc59be4f91341d7e69891af0dd503296375fb3a3fbe3efc7391954a46165e3f.png" title=" And Validate add error messenger &quot;nik perlu 16 digit&quot; Pasien" width="1034"/>
+                <img src="bcc59be4f91341d7e69891af0dd503296375fb3a3fbe3efc7391954a46165e3f.png" title=" Validate text messeger dokter: nik perlu 16 digit" width="1034"/>
+                <img src="bcc59be4f91341d7e69891af0dd503296375fb3a3fbe3efc7391954a46165e3f.png" title=" Validate text messeger dokter: nik perlu 16 digit (completed)" width="1034"/>
+                <img src="bcc59be4f91341d7e69891af0dd503296375fb3a3fbe3efc7391954a46165e3f.png" title=" And Validate add error messenger &quot;nik perlu 16 digit&quot; Pasien (completed)" width="1034"/>
+                <img src="bcc59be4f91341d7e69891af0dd503296375fb3a3fbe3efc7391954a46165e3f.png" title=" 3: As a admin i want to edit data pasien (JK Perempuan) - Invalid ({email=admin, password=admin123, namalengkap=Bagas, nik=11221212, usia=20, nomortelepon=01294657612, alamat=perumahan, text=nik perlu 16 digit}) (completed)" width="1034"/>
+                <img src="d122c364c40ece9db0ad32cd97c3fcf63e95ba606118dda8d3e5a1d2b8235ce2.png" title=" 4: As a admin i want to edit data pasien (JK Perempuan) - Invalid ({email=admin, password=admin123, namalengkap=Bagas, nik=1234567891234567, usia=e, nomortelepon=01294657612, alamat=perumahan, text=})" width="1034"/>
+                <img src="d122c364c40ece9db0ad32cd97c3fcf63e95ba606118dda8d3e5a1d2b8235ce2.png" title=" Given Open login page" width="1034"/>
+                <img src="d122c364c40ece9db0ad32cd97c3fcf63e95ba606118dda8d3e5a1d2b8235ce2.png" title=" Open login" width="1034"/>
+                <img src="d122c364c40ece9db0ad32cd97c3fcf63e95ba606118dda8d3e5a1d2b8235ce2.png" title=" Given Open login page (completed)" width="1034"/>
+                <img src="d122c364c40ece9db0ad32cd97c3fcf63e95ba606118dda8d3e5a1d2b8235ce2.png" title=" And I input &quot;admin&quot; login email valid" width="1034"/>
+                <img src="93df20195d3751dea78ac30a105f84d37c410e0341f58ded6fb231b5b47402e6.png" title=" And I input &quot;admin&quot; login email valid (completed)" width="1034"/>
+                <img src="93df20195d3751dea78ac30a105f84d37c410e0341f58ded6fb231b5b47402e6.png" title=" And I input &quot;admin123&quot; login password valid" width="1034"/>
+                <img src="f684e1524ced0278b0b6c6b37709a7cbfb8281aeb576b04a4743fda17448b798.png" title=" Input password login: admin123" width="1034"/>
+                <img src="44fa0aa493cf3a3837a7fab79c30bded8f584eda85d2cfd055a7ef5b4e3f0a4a.png" title=" Input password login: admin123 (completed)" width="1034"/>
+                <img src="44fa0aa493cf3a3837a7fab79c30bded8f584eda85d2cfd055a7ef5b4e3f0a4a.png" title=" And I input &quot;admin123&quot; login password valid (completed)" width="1034"/>
+                <img src="44fa0aa493cf3a3837a7fab79c30bded8f584eda85d2cfd055a7ef5b4e3f0a4a.png" title=" And I click button login" width="1034"/>
+                <img src="44fa0aa493cf3a3837a7fab79c30bded8f584eda85d2cfd055a7ef5b4e3f0a4a.png" title=" Click button login" width="1034"/>
+                <img src="a00791e7a4942da0f50d6d1cbd6e1eae663d35794cde955f42c068a726d16e94.png" title=" Click button login (completed)" width="1034"/>
+                <img src="e059c88c6b54d9d0632a4600712c7653099a270d0f9f1a2f3440f99e6a20f53b.png" title=" And I click button login (completed)" width="1034"/>
+                <img src="e059c88c6b54d9d0632a4600712c7653099a270d0f9f1a2f3440f99e6a20f53b.png" title=" And Login validation invalid" width="1034"/>
+                <img src="163e386af0b12517552a74a3d5043b94e8c0f9215c0f21d464e3b04d27a0859d.png" title=" Click button error OK" width="1034"/>
+                <img src="0318f95f28f8d50abdb3833e20e2db29b7f7bf96c6365ee5ab1264bac89f9af5.png" title=" Click button error OK (completed)" width="1034"/>
+                <img src="0318f95f28f8d50abdb3833e20e2db29b7f7bf96c6365ee5ab1264bac89f9af5.png" title=" And Login validation invalid (completed)" width="1034"/>
+                <img src="0318f95f28f8d50abdb3833e20e2db29b7f7bf96c6365ee5ab1264bac89f9af5.png" title=" When Click button data pasien" width="1034"/>
+                <img src="e3902e4e6d497170d59aa0c0c2930d955492166dca27ad580f2b08c08bf103aa.png" title=" Click button data pasien" width="1034"/>
+                <img src="52a538477d50210396a2db28a47ec35b4d460ac20f49ce24eb0aeecfc6e675a3.png" title=" Click button data pasien (completed)" width="1034"/>
+                <img src="52a538477d50210396a2db28a47ec35b4d460ac20f49ce24eb0aeecfc6e675a3.png" title=" When Click button data pasien (completed)" width="1034"/>
+                <img src="52a538477d50210396a2db28a47ec35b4d460ac20f49ce24eb0aeecfc6e675a3.png" title=" And Click Detail Patient data" width="1034"/>
+                <img src="addaf5ec6239e0d3e4425671756968a7a7455f25f8897a214886f8eb6a377d89.png" title=" Click button detail" width="1034"/>
+                <img src="07e2bda76f98bc657bb863b482b35d56cc560409cb6ee00ab0a663dfa9675819.png" title=" Click button detail (completed)" width="1034"/>
+                <img src="07e2bda76f98bc657bb863b482b35d56cc560409cb6ee00ab0a663dfa9675819.png" title=" And Click Detail Patient data (completed)" width="1034"/>
+                <img src="07e2bda76f98bc657bb863b482b35d56cc560409cb6ee00ab0a663dfa9675819.png" title=" And Valid data detail pasien" width="1034"/>
+                <img src="84c8b1c96652d3173a625c615caeba2881934d72fb73964a8efa969173530bff.png" title=" Check valid data pasien" width="1034"/>
+                <img src="84c8b1c96652d3173a625c615caeba2881934d72fb73964a8efa969173530bff.png" title=" Check valid data pasien (completed)" width="1034"/>
+                <img src="84c8b1c96652d3173a625c615caeba2881934d72fb73964a8efa969173530bff.png" title=" And Valid data detail pasien (completed)" width="1034"/>
+                <img src="84c8b1c96652d3173a625c615caeba2881934d72fb73964a8efa969173530bff.png" title=" And Click button edit profil" width="1034"/>
+                <img src="16e994d2ff37ef0b8f40a7838c249999fc2b4ba86c4b34c23e44bac5c28ab916.png" title=" Click button edit data pasien" width="1034"/>
+                <img src="bb8c6cb0e03a0f89101b1b4c5d049aecf9721caa1c23216548c8869e63aff963.png" title=" Click button edit data pasien (completed)" width="1034"/>
+                <img src="bb8c6cb0e03a0f89101b1b4c5d049aecf9721caa1c23216548c8869e63aff963.png" title=" And Click button edit profil (completed)" width="1034"/>
+                <img src="bb8c6cb0e03a0f89101b1b4c5d049aecf9721caa1c23216548c8869e63aff963.png" title=" Then I input edit &quot;Bagas&quot; &quot;1234567891234567&quot; &quot;e&quot; &quot;01294657612&quot; &quot;perumahan&quot; patient" width="1034"/>
+                <img src="44da6b97e39b00ca0fa2623cb76e1f5cc5e25e8a7c713590c28bcf34493751f0.png" title=" Input data pasien edit: Bagas, 1234567891234567, e, 01294657612, perumahan" width="1034"/>
+                <img src="735db4fa425e05dba2c1f9a3df24b37a2f78cdc8c194c52c5e8f79cd67a8ccdd.png" title=" Input data pasien edit: Bagas, 1234567891234567, e, 01294657612, perumahan (completed)" width="1034"/>
+                <img src="735db4fa425e05dba2c1f9a3df24b37a2f78cdc8c194c52c5e8f79cd67a8ccdd.png" title=" Then I input edit &quot;Bagas&quot; &quot;1234567891234567&quot; &quot;e&quot; &quot;01294657612&quot; &quot;perumahan&quot; patient (completed)" width="1034"/>
+                <img src="735db4fa425e05dba2c1f9a3df24b37a2f78cdc8c194c52c5e8f79cd67a8ccdd.png" title=" And I click button jenis kelamin perempuan" width="1034"/>
+                <img src="735db4fa425e05dba2c1f9a3df24b37a2f78cdc8c194c52c5e8f79cd67a8ccdd.png" title=" Click perempuan" width="1034"/>
+                <img src="3b4a2497c4c1deed797141d9ef2e7278891adc3448e81d47ddfc8f25bcb412f9.png" title=" Click perempuan (completed)" width="1034"/>
+                <img src="3b4a2497c4c1deed797141d9ef2e7278891adc3448e81d47ddfc8f25bcb412f9.png" title=" And I click button jenis kelamin perempuan (completed)" width="1034"/>
+                <img src="3b4a2497c4c1deed797141d9ef2e7278891adc3448e81d47ddfc8f25bcb412f9.png" title=" And Click button simpan" width="1034"/>
+                <img src="3b4a2497c4c1deed797141d9ef2e7278891adc3448e81d47ddfc8f25bcb412f9.png" title=" Click button save" width="1034"/>
+                <img src="eea85e32e8d07f310c3d7cbef0d3c0b80eb555a99d8aab6c0af7ccc29679d1fe.png" title=" Click button save (completed)" width="1034"/>
+                <img src="9b461fc0e559400dd31acd82ca3eefba6968bef7bfe8f6b691e65b8f80c0093f.png" title=" And Click button simpan (completed)" width="1034"/>
+                <img src="9b461fc0e559400dd31acd82ca3eefba6968bef7bfe8f6b691e65b8f80c0093f.png" title=" And Validate add error messenger &quot;&quot; Pasien" width="1034"/>
+                <img src="9b461fc0e559400dd31acd82ca3eefba6968bef7bfe8f6b691e65b8f80c0093f.png" title=" Validate text messeger dokter: " width="1034"/>
+                <img src="81171cf5a1e5139a1bbd865f793bda5a3ed789801281c9328037e40742aff095.png" title=" Validate text messeger dokter:  (completed)" width="1034"/>
+                <img src="81171cf5a1e5139a1bbd865f793bda5a3ed789801281c9328037e40742aff095.png" title=" And Validate add error messenger &quot;&quot; Pasien (completed)" width="1034"/>
+                <img src="81171cf5a1e5139a1bbd865f793bda5a3ed789801281c9328037e40742aff095.png" title=" 4: As a admin i want to edit data pasien (JK Perempuan) - Invalid ({email=admin, password=admin123, namalengkap=Bagas, nik=1234567891234567, usia=e, nomortelepon=01294657612, alamat=perumahan, text=}) (completed)" width="1034"/>
+                <img src="d122c364c40ece9db0ad32cd97c3fcf63e95ba606118dda8d3e5a1d2b8235ce2.png" title=" 5: As a admin i want to edit data pasien (JK Perempuan) - Invalid ({email=admin, password=admin123, namalengkap=Bagas, nik=1234567891234567, usia=20, nomortelepon=jngasjgxbba, alamat=perumahan, text=nomor telpon harus berupa angka})" width="1034"/>
+                <img src="d122c364c40ece9db0ad32cd97c3fcf63e95ba606118dda8d3e5a1d2b8235ce2.png" title=" Given Open login page" width="1034"/>
+                <img src="d122c364c40ece9db0ad32cd97c3fcf63e95ba606118dda8d3e5a1d2b8235ce2.png" title=" Open login" width="1034"/>
+                <img src="d122c364c40ece9db0ad32cd97c3fcf63e95ba606118dda8d3e5a1d2b8235ce2.png" title=" Given Open login page (completed)" width="1034"/>
+                <img src="d122c364c40ece9db0ad32cd97c3fcf63e95ba606118dda8d3e5a1d2b8235ce2.png" title=" And I input &quot;admin&quot; login email valid" width="1034"/>
+                <img src="93df20195d3751dea78ac30a105f84d37c410e0341f58ded6fb231b5b47402e6.png" title=" And I input &quot;admin&quot; login email valid (completed)" width="1034"/>
+                <img src="93df20195d3751dea78ac30a105f84d37c410e0341f58ded6fb231b5b47402e6.png" title=" And I input &quot;admin123&quot; login password valid" width="1034"/>
+                <img src="f684e1524ced0278b0b6c6b37709a7cbfb8281aeb576b04a4743fda17448b798.png" title=" Input password login: admin123" width="1034"/>
+                <img src="44fa0aa493cf3a3837a7fab79c30bded8f584eda85d2cfd055a7ef5b4e3f0a4a.png" title=" Input password login: admin123 (completed)" width="1034"/>
+                <img src="44fa0aa493cf3a3837a7fab79c30bded8f584eda85d2cfd055a7ef5b4e3f0a4a.png" title=" And I input &quot;admin123&quot; login password valid (completed)" width="1034"/>
+                <img src="44fa0aa493cf3a3837a7fab79c30bded8f584eda85d2cfd055a7ef5b4e3f0a4a.png" title=" And I click button login" width="1034"/>
+                <img src="44fa0aa493cf3a3837a7fab79c30bded8f584eda85d2cfd055a7ef5b4e3f0a4a.png" title=" Click button login" width="1034"/>
+                <img src="bad73fc1cfbd50c77e86052696411305d27948fee8a76cd7197d0c159dda7e4a.png" title=" Click button login (completed)" width="1034"/>
+                <img src="1105e78d378c2f06d5aa25b71c1d317c9879574433deccf4642f40575f63dcf9.png" title=" And I click button login (completed)" width="1034"/>
+                <img src="1105e78d378c2f06d5aa25b71c1d317c9879574433deccf4642f40575f63dcf9.png" title=" And Login validation invalid" width="1034"/>
+                <img src="163e386af0b12517552a74a3d5043b94e8c0f9215c0f21d464e3b04d27a0859d.png" title=" Click button error OK" width="1034"/>
+                <img src="21c929e75ffdb49d9dca5f7e7ca5f5f22848677ae18af84d460fef467d5b1311.png" title=" Click button error OK (completed)" width="1034"/>
+                <img src="21c929e75ffdb49d9dca5f7e7ca5f5f22848677ae18af84d460fef467d5b1311.png" title=" And Login validation invalid (completed)" width="1034"/>
+                <img src="21c929e75ffdb49d9dca5f7e7ca5f5f22848677ae18af84d460fef467d5b1311.png" title=" When Click button data pasien" width="1034"/>
+                <img src="e3902e4e6d497170d59aa0c0c2930d955492166dca27ad580f2b08c08bf103aa.png" title=" Click button data pasien" width="1034"/>
+                <img src="81c07b56d3038549e370acffd115455cb2379bcd67749f18fe6eb6117033c741.png" title=" Click button data pasien (completed)" width="1034"/>
+                <img src="81c07b56d3038549e370acffd115455cb2379bcd67749f18fe6eb6117033c741.png" title=" When Click button data pasien (completed)" width="1034"/>
+                <img src="81c07b56d3038549e370acffd115455cb2379bcd67749f18fe6eb6117033c741.png" title=" And Click Detail Patient data" width="1034"/>
+                <img src="382e83dcfc7187e7fc61d0671ee201628243b60b304439c29588db327157beff.png" title=" Click button detail" width="1034"/>
+                <img src="9ca8aba9135da53031f38233767127a718f5f015bc7a856db392e56e1ee7ddc0.png" title=" Click button detail (completed)" width="1034"/>
+                <img src="9ca8aba9135da53031f38233767127a718f5f015bc7a856db392e56e1ee7ddc0.png" title=" And Click Detail Patient data (completed)" width="1034"/>
+                <img src="9ca8aba9135da53031f38233767127a718f5f015bc7a856db392e56e1ee7ddc0.png" title=" And Valid data detail pasien" width="1034"/>
+                <img src="7ee96a4d5569f8dbeef752f2196a6214791f30d0b7be2f6fa48c242af709f91a.png" title=" Check valid data pasien" width="1034"/>
+                <img src="7ee96a4d5569f8dbeef752f2196a6214791f30d0b7be2f6fa48c242af709f91a.png" title=" And Valid data detail pasien" width="1034"/>
+                <img src="7ee96a4d5569f8dbeef752f2196a6214791f30d0b7be2f6fa48c242af709f91a.png" title=" Check valid data pasien (completed)" width="1034"/>
+                <img src="7ee96a4d5569f8dbeef752f2196a6214791f30d0b7be2f6fa48c242af709f91a.png" title=" And Click button edit profil" width="1034"/>
+                <img src="7ee96a4d5569f8dbeef752f2196a6214791f30d0b7be2f6fa48c242af709f91a.png" title=" Click button edit data pasien" width="1034"/>
+                <img src="f70bf0442ea66228e79a26a193b86a5305fa20f5a916ae814d29113f5613d79b.png" title=" Click button edit data pasien (completed)" width="1034"/>
+                <img src="f70bf0442ea66228e79a26a193b86a5305fa20f5a916ae814d29113f5613d79b.png" title=" And Click button edit profil (completed)" width="1034"/>
+                <img src="f70bf0442ea66228e79a26a193b86a5305fa20f5a916ae814d29113f5613d79b.png" title=" Then I input edit &quot;Bagas&quot; &quot;1234567891234567&quot; &quot;20&quot; &quot;jngasjgxbba&quot; &quot;perumahan&quot; patient" width="1034"/>
+                <img src="f70bf0442ea66228e79a26a193b86a5305fa20f5a916ae814d29113f5613d79b.png" title=" Input data pasien edit: Bagas, 1234567891234567, 20, jngasjgxbba, perumahan" width="1034"/>
+                <img src="979e3b392c1777f5d2d7f123ee90d7ef33a5e4f85d70d22627f971649321b70b.png" title=" Input data pasien edit: Bagas, 1234567891234567, 20, jngasjgxbba, perumahan (completed)" width="1034"/>
+                <img src="979e3b392c1777f5d2d7f123ee90d7ef33a5e4f85d70d22627f971649321b70b.png" title=" Then I input edit &quot;Bagas&quot; &quot;1234567891234567&quot; &quot;20&quot; &quot;jngasjgxbba&quot; &quot;perumahan&quot; patient (completed)" width="1034"/>
+                <img src="979e3b392c1777f5d2d7f123ee90d7ef33a5e4f85d70d22627f971649321b70b.png" title=" And I click button jenis kelamin perempuan" width="1034"/>
+                <img src="979e3b392c1777f5d2d7f123ee90d7ef33a5e4f85d70d22627f971649321b70b.png" title=" Click perempuan" width="1034"/>
+                <img src="c9d6accf128a0a625ae89d9740f6aa9668cb3934b81e73c76b02a957b6e45533.png" title=" Click perempuan (completed)" width="1034"/>
+                <img src="c9d6accf128a0a625ae89d9740f6aa9668cb3934b81e73c76b02a957b6e45533.png" title=" And I click button jenis kelamin perempuan (completed)" width="1034"/>
+                <img src="c9d6accf128a0a625ae89d9740f6aa9668cb3934b81e73c76b02a957b6e45533.png" title=" And Click button simpan" width="1034"/>
+                <img src="c9d6accf128a0a625ae89d9740f6aa9668cb3934b81e73c76b02a957b6e45533.png" title=" Click button save" width="1034"/>
+                <img src="f7533a6c7a24a25826484ad0d95accdb8d0cdb93bfe24c3ccef06092efe2d6fc.png" title=" Click button save (completed)" width="1034"/>
+                <img src="8fad99628e82396dd8fcd26a23b2945bedcf36dae1085208f9f068abb1d62afa.png" title=" And Click button simpan (completed)" width="1034"/>
+                <img src="8fad99628e82396dd8fcd26a23b2945bedcf36dae1085208f9f068abb1d62afa.png" title=" And Validate add error messenger &quot;nomor telpon harus berupa angka&quot; Pasien" width="1034"/>
+                <img src="8fad99628e82396dd8fcd26a23b2945bedcf36dae1085208f9f068abb1d62afa.png" title=" Validate text messeger dokter: nomor telpon harus berupa angka" width="1034"/>
+                <img src="8fad99628e82396dd8fcd26a23b2945bedcf36dae1085208f9f068abb1d62afa.png" title=" Validate text messeger dokter: nomor telpon harus berupa angka (completed)" width="1034"/>
+                <img src="8fad99628e82396dd8fcd26a23b2945bedcf36dae1085208f9f068abb1d62afa.png" title=" 5: As a admin i want to edit data pasien (JK Perempuan) - Invalid ({email=admin, password=admin123, namalengkap=Bagas, nik=1234567891234567, usia=20, nomortelepon=jngasjgxbba, alamat=perumahan, text=nomor telpon harus berupa angka})" width="1034"/>
+                <img src="8fad99628e82396dd8fcd26a23b2945bedcf36dae1085208f9f068abb1d62afa.png" title=" And Validate add error messenger &quot;nomor telpon harus berupa angka&quot; Pasien (completed): <span class='success-color'>SUCCESS</span>" width="1034"/>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+<div id="beforefooter"></div>
+<div id="bottomfooter">
+    <span class="version">Serenity BDD version 3.2.1</span>
+</div>
+</body>
+</html>

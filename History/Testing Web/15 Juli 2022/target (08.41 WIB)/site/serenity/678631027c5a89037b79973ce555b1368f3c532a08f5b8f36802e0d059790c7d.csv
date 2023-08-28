@@ -1,0 +1,4 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Data Pasien - Admin","As a admin i want to add data pasien (JK Laki-Laki) - Valid","ERROR","2022-07-15T08:32:11.6227804+07:00[Asia/Bangkok]","0.0","15.48"
+"Data Pasien - Admin","As a admin i want to add data pasien (JK Laki-Laki) - Kosong","ERROR","2022-07-15T08:32:27.1312496+07:00[Asia/Bangkok]","0.0","115.43"
+"Data Pasien - Admin","As a admin i want to edit data pasien (JK Perempuan) - Valid","ERROR","2022-07-15T08:37:14.9137706+07:00[Asia/Bangkok]","0.0","18.95"
