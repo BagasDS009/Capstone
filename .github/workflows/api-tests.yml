@@ -2,11 +2,11 @@ name: API Tests
 
 on:
   push:
-    branches: [master, main]
+    branches: [refactor]
     paths:
       - 'AutomationApiTesting/**'
   pull_request:
-    branches: [master, main]
+    branches: [refactor]
     paths:
       - 'AutomationApiTesting/**'
   workflow_dispatch:

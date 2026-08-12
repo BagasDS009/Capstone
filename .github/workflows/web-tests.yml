@@ -2,11 +2,11 @@ name: Web Tests
 
 on:
   push:
-    branches: [master, main]
+    branches: [refactor]
     paths:
       - 'AutomationWebsiteTesing/**'
   pull_request:
-    branches: [master, main]
+    branches: [refactor]
     paths:
       - 'AutomationWebsiteTesing/**'
   workflow_dispatch:

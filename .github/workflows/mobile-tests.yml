@@ -2,11 +2,11 @@ name: Mobile Tests
 
 on:
   push:
-    branches: [master, main]
+    branches: [refactor]
     paths:
       - 'AutomationMobileTesing/**'
   pull_request:
-    branches: [master, main]
+    branches: [refactor]
     paths:
       - 'AutomationMobileTesing/**'
   workflow_dispatch:
