@@ -1,7 +1,6 @@
 package starter.stepdefinitios;
 
 import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import net.thucydides.core.annotations.Steps;
@@ -10,45 +9,43 @@ import starter.pages.DashboardPage;
 import starter.pages.PatientDataPage;
 
 public class ArsipJadwalSteps {
-    @Steps
-    DashboardPage dashboardPage;
-    @Steps
-    PatientDataPage patientDataPage;
-    @Steps
-    ArsipJadwalPage arsipJadwalPage;
+
+    @Steps DashboardPage dashboardPage;
+    @Steps PatientDataPage patientDataPage;
+    @Steps ArsipJadwalPage arsipJadwalPage;
+
     @When("Click button archive")
-    public void clickButtonArchive() throws InterruptedException {
-        Thread.sleep(5000);
+    public void clickButtonArchive() {
         dashboardPage.clickButtonArsipJadwal();
     }
+
     @Then("View archive")
-    public void viewArchive() throws InterruptedException {
-        Thread.sleep(5000);
+    public void viewArchive() {
         patientDataPage.validPagePasien();
     }
+
     @And("Click search all category archive")
-    public void clickSearchAllCategoryArchive() throws InterruptedException {
-        Thread.sleep(5000);
+    public void clickSearchAllCategoryArchive() {
         patientDataPage.clickButtonAllCategory();
     }
+
     @Then("Valid data category archive")
-    public void validDataCategoryArchive() throws InterruptedException {
-        Thread.sleep(2000);
+    public void validDataCategoryArchive() {
         patientDataPage.validPagePasien();
     }
+
     @When("Click chose nama pasien")
-    public void clickChoseNamaPasien() throws InterruptedException {
-        Thread.sleep(1000);
+    public void clickChoseNamaPasien() {
         arsipJadwalPage.clickButtonChooseCategoryNamaOnArsip();
     }
+
     @And("Click icon aksi on archive")
-    public void clickIconAksiOnArchive() throws InterruptedException {
-        Thread.sleep(5000);
+    public void clickIconAksiOnArchive() {
         arsipJadwalPage.clickIconAksiOnArsip();
     }
+
     @And("Validate review")
-    public void validateReview() throws InterruptedException {
-        Thread.sleep(5000);
+    public void validateReview() {
         arsipJadwalPage.validateOnReviewPage();
     }
 }

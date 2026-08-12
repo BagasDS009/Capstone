@@ -1,0 +1,23 @@
+# === Build output ===
+target/
+
+# === IDE ===
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+
+# === OS ===
+.DS_Store
+Thumbs.db
+
+# === Maven ===
+*.class
+*.jar
+*.war
+*.log
+dependency-reduced-pom.xml
+
+# === WebDriver binaries (download via WebDriverManager or Serenity auto-download) ===
+src/test/resources/webdriver/

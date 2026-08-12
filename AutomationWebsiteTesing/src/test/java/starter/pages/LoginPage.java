@@ -5,72 +5,63 @@ import net.thucydides.core.pages.PageObject;
 import org.openqa.selenium.By;
 
 public class LoginPage extends PageObject {
+
     private By emailFieldLogin() {
         return By.xpath("//*[@name=\"username\"]");
     }
+
     private By passwordFieldLogin() {
         return By.xpath("//*[@name=\"password\"]");
     }
+
     private By buttonLogin() {
         return By.xpath("//*[@type=\"submit\"]");
     }
-    private By kosongErrorMessager() {
+
+    private By kosongErrorMessage() {
         return By.xpath("//*[@class=\"style_containerForm__N7MYO\"]");
     }
-    private By invalidErrorMessager() {
+
+    private By invalidErrorMessage() {
         return By.xpath("//*[@role=\"dialog\"]");
     }
-    private By buttonOkErrorMessager() {
+
+    private By buttonOkErrorMessage() {
         return By.xpath("//*[@class=\"swal2-actions\"]/button");
     }
-//    private By pilihRole() {
-//        return By.xpath("//*[@name=\"role\"]");
-//    }
-//    private By roleAdmin() {
-//        return By.xpath("//*[@value=\"admin\"]");
-//    }
-//    private By roleDokter() {
-//        return By.xpath("//*[@value=\"dokter\"]");
-//    }
 
-    @Step
+    @Step("Open login page")
     public void openLogin() {
         openAt("/login");
     }
-    //    @Step
-//    public void clickButtonRole() {
-//        $(pilihRole()).click();
-//    }
-//    @Step
-//    public void clickAdmin() {
-//        $(roleAdmin()).click();
-//    }
-//    @Step
-//    public void clickDokter() {
-//        $(roleDokter()).click();
-//    }
-//    @Step
+
+    @Step("Input email: {0}")
     public void inputEmailLogin(String usernameLogin) {
         $(emailFieldLogin()).sendKeys(usernameLogin);
     }
-    @Step
+
+    @Step("Input password")
     public void inputPasswordLogin(String passwordLogin) {
         $(passwordFieldLogin()).sendKeys(passwordLogin);
     }
-    @Step
+
+    @Step("Click login button")
     public void clickButtonLogin() {
         $(buttonLogin()).click();
     }
-    @Step
+
+    @Step("Validate empty field error is displayed")
     public boolean loginTextError() {
-        return $(kosongErrorMessager()).isDisabled();
+        return $(kosongErrorMessage()).isDisplayed();
     }
+
+    @Step("Validate invalid credentials error is displayed")
     public boolean loginInvalidError() {
-        return $(invalidErrorMessager()).isDisabled();
+        return $(invalidErrorMessage()).isDisplayed();
     }
-    @Step
+
+    @Step("Click OK on error dialog")
     public void clickButtonErrorOK() {
-        $(buttonOkErrorMessager()).click();
+        $(buttonOkErrorMessage()).click();
     }
 }
-

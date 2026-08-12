@@ -1,7 +1,6 @@
 package starter.stepdefinitios;
 
 import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import net.thucydides.core.annotations.Steps;
@@ -10,74 +9,70 @@ import starter.pages.DokterDataPage;
 import starter.pages.PatientDataPage;
 
 public class DokterDataSteps {
-    @Steps
-    DashboardPage dashboardPage;
-    @Steps
-    PatientDataPage patientDataPage;
-    @Steps
-    DokterDataPage dokterDataPage;
+
+    @Steps DashboardPage dashboardPage;
+    @Steps PatientDataPage patientDataPage;
+    @Steps DokterDataPage dokterDataPage;
+
     @When("Click button data dokter")
-    public void clickButtonDataDokter() throws InterruptedException {
-        Thread.sleep(5000);
+    public void clickButtonDataDokter() {
         dashboardPage.clickButtonDataDokter();
     }
+
     @Then("View Dokter data")
-    public void viewDokterData() throws InterruptedException {
-        Thread.sleep(5000);
+    public void viewDokterData() {
         patientDataPage.validPagePasien();
     }
+
     @When("Click Detail dokter data")
-    public void clickDetailDokterData() throws InterruptedException {
-        Thread.sleep(5000);
+    public void clickDetailDokterData() {
         patientDataPage.clickButtonDetail();
     }
+
     @Then("Valid data detail dokter")
-    public void validDataDetailDokter() throws InterruptedException {
-        Thread.sleep(3000);
+    public void validDataDetailDokter() {
         patientDataPage.checkValidDataPasien();
     }
+
     @Then("I input {string} {string} {string} {string} {string} {string} dokter")
-    public void iInputDokter(String arg0, String arg1, String arg2, String arg3, String arg4, String arg5) throws InterruptedException {
-        Thread.sleep(500);
-        dokterDataPage.inputDataDokter(arg0, arg1, arg2, arg3, arg4, arg5);
+    public void iInputDokter(String nama, String idi, String spesialis, String username, String pass, String confirmpass) {
+        dokterDataPage.inputDataDokter(nama, idi, spesialis, username, pass, confirmpass);
     }
+
     @Then("I input edit {string} {string} {string} {string} {string} {string} dokter")
-    public void iInputEditDokter(String arg0, String arg1, String arg2, String arg3, String arg4, String arg5) throws InterruptedException {
-        Thread.sleep(500);
-        dokterDataPage.inputDataDokterEdit(arg0, arg1, arg2, arg3, arg4, arg5);
+    public void iInputEditDokter(String nama, String idi, String spesialis, String username, String pass, String confirmpass) {
+        dokterDataPage.inputDataDokterEdit(nama, idi, spesialis, username, pass, confirmpass);
     }
+
     @And("Valid data dokter")
-    public void validDataDokter() throws InterruptedException {
-        Thread.sleep(5000);
+    public void validDataDokter() {
         patientDataPage.validAddData();
-        Thread.sleep(1000);
         patientDataPage.buttonClickOK();
-        Thread.sleep(5000);
         patientDataPage.validPagePasien();
     }
+
     @And("Validate add error messenger {string} dokter")
-    public void validateAddErrorMessegerDokter(String text) throws InterruptedException {
-        Thread.sleep(1000);
+    public void validateAddErrorMessegerDokter(String text) {
         dokterDataPage.validateTextMessegerDokter(text);
     }
+
     @When("Click Delete dokter data")
-    public void clickDeleteDokterData() throws InterruptedException {
-        Thread.sleep(5000);
+    public void clickDeleteDokterData() {
         patientDataPage.clickButtonSampah();
     }
+
     @Then("Valid data delete dokter")
-    public void validDataDeleteDokter() throws InterruptedException {
-        Thread.sleep(5000);
+    public void validDataDeleteDokter() {
         patientDataPage.validPagePasien();
     }
+
     @And("Click search all category dokter data")
-    public void clickSearchAllCategoryDokterData() throws InterruptedException {
-        Thread.sleep(5000);
+    public void clickSearchAllCategoryDokterData() {
         patientDataPage.clickButtonAllCategory();
     }
+
     @And("Click chose nama dokter")
-    public void clickChoseNamaDokter() throws InterruptedException {
-        Thread.sleep(5000);
+    public void clickChoseNamaDokter() {
         dokterDataPage.clickNamaDokter();
     }
 }

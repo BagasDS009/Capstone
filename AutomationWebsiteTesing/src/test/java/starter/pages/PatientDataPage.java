@@ -1,6 +1,5 @@
 package starter.pages;
 
-import com.github.javafaker.PhoneNumber;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.PageObject;
 import org.openqa.selenium.By;
