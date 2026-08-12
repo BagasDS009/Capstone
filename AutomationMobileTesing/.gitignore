@@ -1,3 +1,28 @@
-# Project exclude paths
-.idea
-target
+# === Build & IDE ===
+target/
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+.gradle/
+build/
+
+# === OS ===
+.DS_Store
+Thumbs.db
+
+# === Gradle (unused, project uses Maven) ===
+gradlew
+gradlew.bat
+gradle/
+
+# === Maven ===
+*.class
+*.jar
+*.war
+*.log
+dependency-reduced-pom.xml
+
+# === Serenity Reports (regeneratable) ===
+# target/site/serenity/
