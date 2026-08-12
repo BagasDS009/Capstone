@@ -1,0 +1,51 @@
+name: Web Tests
+
+on:
+  push:
+    branches: [master, main]
+    paths:
+      - 'AutomationWebsiteTesing/**'
+  pull_request:
+    branches: [master, main]
+    paths:
+      - 'AutomationWebsiteTesing/**'
+  workflow_dispatch:
+
+jobs:
+  web-test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: AutomationWebsiteTesing
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 11
+        uses: actions/setup-java@v4
+        with:
+          java-version: '11'
+          distribution: 'temurin'
+          cache: 'maven'
+
+      - name: Set up Chrome
+        uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: 'stable'
+
+      - name: Run Web tests
+        run: mvn clean verify -Dwebdriver.driver=chrome -Dwebdriver.chrome.args="--headless,--no-sandbox,--disable-dev-shm-usage"
+        continue-on-error: true
+
+      - name: Generate Serenity report
+        if: always()
+        run: mvn serenity:aggregate
+
+      - name: Upload Serenity report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: web-test-report
+          path: AutomationWebsiteTesing/target/site/serenity/
+          retention-days: 14

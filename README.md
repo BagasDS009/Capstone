@@ -1,994 +1,200 @@
-# Capstone Membuat Hospital Management Sistem 
+# Capstone Project - Hospital Management System (QE Automation)
 
-Program Hospital Management Sistem ini dibuat dengan dua role, role pertama adalah Pasien dan role kedua adalah Dokter. Untuk Role Pasien dapat melakukan konsultasi ke dokter yang tersedia, dan untuk role dokter dapat menjawab permasalahan pasien. kedua role dapat melakukan login pada page login yang sama. Program ini dibuat dengan versi Website dan Aplikasi Tablet. Dilakukan manual testing API, website, dan aplikasi secara berkala. dan juga dilakukan automation testing dengan selenium.
+Comprehensive test automation suite for the Hospital Management System (Klinik/Puskesmas), covering **API**, **Web**, and **Mobile** testing.
 
-Berikut struktur folder dalam aplikasi ini:
+This project was originally built as a capstone during Studi Independent at Alterra Academy (2022) and has been refactored for improved code quality and maintainability.
+
+## Project Structure
 
 ```
-PS D:\Studi Independent\Alterra\Capstone> tree
-Folder PATH listing for volume DataBagas
-Volume serial number is E03A-2810
-D:.
-├───AutomationApiTesting
-│   ├───.idea
-│   └───src
-│       └───test
-│           ├───java
-│           │   ├───Starter
-│           │   │   ├───Auth
-│           │   │   ├───DataDokter
-│           │   │   ├───DataPasien
-│           │   │   ├───KelolaJadwal
-│           │   │   ├───StepDefinitions
-│           │   │   └───User
-│           │   └───Utils
-│           └───resources
-│               ├───Authentication
-│               ├───DataDokter
-│               ├───DataPasien
-│               ├───filejson
-│               ├───KelolaJadwal
-│               └───User
-├───AutomationMobileTesing
-│   ├───.gradle
-│   │   ├───8.2
-│   │   │   ├───checksums
-│   │   │   ├───dependencies-accessors
-│   │   │   ├───executionHistory
-│   │   │   ├───fileChanges
-│   │   │   ├───fileHashes
-│   │   │   └───vcsMetadata
-│   │   ├───buildOutputCleanup
-│   │   └───vcs-1
-│   ├───.idea
-│   ├───gradle
-│   │   └───wrapper
-│   ├───history
-│   ├───src
-│   │   ├───main
-│   │   │   └───java
-│   │   │       └───com
-│   │   │           └───example
-│   │   │               └───app
-│   │   │                   ├───base
-│   │   │                   ├───drivers
-│   │   │                   ├───pages
-│   │   │                   └───utils
-│   │   └───test
-│   │       ├───java
-│   │       │   └───com
-│   │       │       └───example
-│   │       │           ├───acceptancetests
-│   │       │           ├───hooks
-│   │       │           └───steps
-│   │       │               ├───ArchiveSchedule
-│   │       │               ├───Auth
-│   │       │               ├───DoctorData
-│   │       │               ├───ManageSchedule
-│   │       │               ├───PatientData
-│   │       │               └───Review
-│   │       └───resources
-│   │           ├───application
-│   │           └───features
-│   │               ├───ArchiveSchedule
-│   │               ├───Auth
-│   │               ├───DoctorData
-│   │               ├───ManageSchedule
-│   │               ├───PatientData
-│   │               └───Review
-│   └───target
-│       └───site
-│           └───serenity
-├───AutomationWebsiteTesing
-│   ├───.idea
-│   │   └───codeStyles
-│   ├───src
-│   │   └───test
-│   │       ├───java
-│   │       │   └───starter
-│   │       │       ├───pages
-│   │       │       └───stepdefinitios
-│   │       └───resources
-│   │           ├───features
-│   │           └───webdriver
-│   └───target
-│       ├───failsafe-reports
-│       ├───maven-archiver
-│       ├───maven-status
-│       │   └───maven-compiler-plugin
-│       │       ├───compile
-│       │       │   └───default-compile
-│       │       └───testCompile
-│       │           └───default-testCompile
-│       ├───site
-│       │   └───serenity
-│       │       ├───bootstrap
-│       │       │   ├───css
-│       │       │   ├───fonts
-│       │       │   └───js
-│       │       ├───bootstrap-icons
-│       │       │   ├───font
-│       │       │   │   └───fonts
-│       │       │   └───icons
-│       │       ├───bootstrap-treeview
-│       │       │   └───dist
-│       │       ├───chartjs
-│       │       ├───css
-│       │       ├───datatables
-│       │       │   └───1.11.3
-│       │       ├───dygraph
-│       │       │   └───1.1.0
-│       │       ├───excanvas
-│       │       │   └───3
-│       │       ├───icons
-│       │       ├───images
-│       │       ├───jit
-│       │       │   ├───2.0.1
-│       │       │   └───css
-│       │       ├───jqtree
-│       │       │   └───0.22
-│       │       ├───jqueryui
-│       │       │   └───1.11.2-start
-│       │       │       ├───external
-│       │       │       │   └───jquery
-│       │       │       └───images
-│       │       ├───nivo-slider
-│       │       │   └───3.2
-│       │       │       ├───demo
-│       │       │       │   ├───images
-│       │       │       │   └───scripts
-│       │       │       └───themes
-│       │       │           ├───bar
-│       │       │           ├───dark
-│       │       │           ├───default
-│       │       │           └───light
-│       │       ├───prism
-│       │       └───scripts
-│       └───test-classes
-│           ├───features
-│           ├───starter
-│           │   ├───pages
-│           │   └───stepdefinitios
-│           └───webdriver
-└───History
-    └───Testing Web
-        ├───13 Juni 2022 - Senin
-        │   └───target
-        │       ├───classes
-        │       ├───failsafe-reports
-        │       ├───generated-sources
-        │       │   └───annotations
-        │       ├───generated-test-sources
-        │       │   └───test-annotations
-        │       ├───maven-archiver
-        │       ├───maven-status
-        │       │   └───maven-compiler-plugin
-        │       │       ├───compile
-        │       │       │   └───default-compile
-        │       │       └───testCompile
-        │       │           └───default-testCompile
-        │       ├───site
-        │       │   └───serenity
-        │       │       ├───bootstrap
-        │       │       │   ├───css
-        │       │       │   ├───fonts
-        │       │       │   └───js
-        │       │       ├───bootstrap-icons
-        │       │       │   └───icons
-        │       │       ├───bootstrap-treeview
-        │       │       │   └───dist
-        │       │       ├───chartjs
-        │       │       ├───datatables
-        │       │       │   └───1.11.3
-        │       │       ├───excanvas
-        │       │       │   └───3
-        │       │       ├───icons
-        │       │       ├───jit
-        │       │       │   └───css
-        │       │       ├───jqtree
-        │       │       │   └───0.22
-        │       │       ├───jqueryui
-        │       │       │   └───1.11.2-start
-        │       │       │       ├───external
-        │       │       │       │   └───jquery
-        │       │       │       └───images
-        │       │       ├───nivo-slider
-        │       │       │   └───3.2
-        │       │       │       └───themes
-        │       │       │           └───light
-        │       │       ├───prism
-        │       │       └───scripts
-        │       └───test-classes
-        │           ├───features
-        │           ├───starter
-        │           │   └───pages
-        │           └───webdriver
-        ├───15 Juli 2022
-        │   ├───target
-        │   │   ├───classes
-        │   │   ├───failsafe-reports
-        │   │   ├───generated-sources
-        │   │   │   └───annotations
-        │   │   ├───generated-test-sources
-        │   │   │   └───test-annotations
-        │   │   ├───maven-archiver
-        │   │   ├───maven-status
-        │   │   │   └───maven-compiler-plugin
-        │   │   │       └───testCompile
-        │   │   │           └───default-testCompile
-        │   │   ├───site
-        │   │   │   └───serenity
-        │   │   │       ├───bootstrap
-        │   │   │       │   ├───css
-        │   │   │       │   ├───fonts
-        │   │   │       │   └───js
-        │   │   │       ├───bootstrap-icons
-        │   │   │       │   ├───font
-        │   │   │       │   │   └───fonts
-        │   │   │       │   └───icons
-        │   │   │       ├───bootstrap-treeview
-        │   │   │       │   └───dist
-        │   │   │       ├───css
-        │   │   │       ├───icons
-        │   │   │       ├───jqueryui
-        │   │   │       │   └───1.11.2-start
-        │   │   │       │       └───images
-        │   │   │       ├───nivo-slider
-        │   │   │       │   └───3.2
-        │   │   │       │       ├───demo
-        │   │   │       │       │   ├───images
-        │   │   │       │       │   └───scripts
-        │   │   │       │       └───themes
-        │   │   │       │           ├───bar
-        │   │   │       │           ├───dark
-        │   │   │       │           ├───default
-        │   │   │       │           └───light
-        │   │   │       └───prism
-        │   │   └───test-classes
-        │   │       ├───features
-        │   │       ├───starter
-        │   │       │   ├───pages
-        │   │       │   └───stepdefinitios
-        │   │       └───webdriver
-        │   └───target (08.41 WIB)
-        │       ├───classes
-        │       ├───failsafe-reports
-        │       ├───generated-sources
-        │       │   └───annotations
-        │       ├───generated-test-sources
-        │       │   └───test-annotations
-        │       ├───maven-archiver
-        │       ├───maven-status
-        │       │   └───maven-compiler-plugin
-        │       │       ├───compile
-        │       │       │   └───default-compile
-        │       │       └───testCompile
-        │       │           └───default-testCompile
-        │       ├───site
-        │       │   └───serenity
-        │       │       ├───bootstrap-icons
-        │       │       │   ├───font
-        │       │       │   │   └───fonts
-        │       │       │   └───icons
-        │       │       ├───bootstrap-treeview
-        │       │       │   └───dist
-        │       │       ├───css
-        │       │       ├───datatables
-        │       │       │   └───1.11.3
-        │       │       ├───excanvas
-        │       │       │   └───3
-        │       │       ├───icons
-        │       │       ├───images
-        │       │       ├───jit
-        │       │       │   └───css
-        │       │       ├───jqueryui
-        │       │       │   └───1.11.2-start
-        │       │       │       ├───external
-        │       │       │       │   └───jquery
-        │       │       │       └───images
-        │       │       ├───nivo-slider
-        │       │       │   └───3.2
-        │       │       │       ├───demo
-        │       │       │       │   ├───images
-        │       │       │       │   └───scripts
-        │       │       │       └───themes
-        │       │       │           ├───bar
-        │       │       │           ├───dark
-        │       │       │           ├───default
-        │       │       │           └───light
-        │       │       ├───prism
-        │       │       └───scripts
-        │       └───test-classes
-        │           ├───features
-        │           ├───starter
-        │           │   └───stepdefinitios
-        │           └───webdriver
-        ├───17 juli 2022 (17.56)
-        │   ├───ArsipJadwal
-        │   │   └───target
-        │   │       ├───classes
-        │   │       ├───failsafe-reports
-        │   │       ├───generated-sources
-        │   │       │   └───annotations
-        │   │       ├───generated-test-sources
-        │   │       │   └───test-annotations
-        │   │       ├───maven-archiver
-        │   │       ├───maven-status
-        │   │       │   └───maven-compiler-plugin
-        │   │       │       ├───compile
-        │   │       │       │   └───default-compile
-        │   │       │       └───testCompile
-        │   │       │           └───default-testCompile
-        │   │       ├───site
-        │   │       │   └───serenity
-        │   │       │       ├───bootstrap
-        │   │       │       │   ├───fonts
-        │   │       │       │   └───js
-        │   │       │       ├───bootstrap-icons
-        │   │       │       │   └───icons
-        │   │       │       ├───bootstrap-treeview
-        │   │       │       │   └───dist
-        │   │       │       ├───chartjs
-        │   │       │       ├───css
-        │   │       │       ├───dygraph
-        │   │       │       │   └───1.1.0
-        │   │       │       ├───icons
-        │   │       │       ├───images
-        │   │       │       ├───jit
-        │   │       │       │   ├───2.0.1
-        │   │       │       │   └───css
-        │   │       │       ├───jqtree
-        │   │       │       │   └───0.22
-        │   │       │       ├───jqueryui
-        │   │       │       │   └───1.11.2-start
-        │   │       │       │       └───images
-        │   │       │       ├───nivo-slider
-        │   │       │       │   └───3.2
-        │   │       │       │       ├───demo
-        │   │       │       │       │   ├───images
-        │   │       │       │       │   └───scripts
-        │   │       │       │       └───themes
-        │   │       │       │           ├───bar
-        │   │       │       │           ├───dark
-        │   │       │       │           ├───default
-        │   │       │       │           └───light
-        │   │       │       └───scripts
-        │   │       └───test-classes
-        │   │           ├───features
-        │   │           └───starter
-        │   │               └───stepdefinitios
-        │   ├───Data Dokter
-        │   │   └───target
-        │   │       ├───classes
-        │   │       ├───failsafe-reports
-        │   │       ├───generated-sources
-        │   │       │   └───annotations
-        │   │       ├───generated-test-sources
-        │   │       │   └───test-annotations
-        │   │       ├───maven-archiver
-        │   │       ├───maven-status
-        │   │       │   └───maven-compiler-plugin
-        │   │       │       └───testCompile
-        │   │       │           └───default-testCompile
-        │   │       ├───site
-        │   │       │   └───serenity
-        │   │       │       ├───bootstrap
-        │   │       │       │   ├───css
-        │   │       │       │   ├───fonts
-        │   │       │       │   └───js
-        │   │       │       ├───bootstrap-icons
-        │   │       │       │   ├───font
-        │   │       │       │   │   └───fonts
-        │   │       │       │   └───icons
-        │   │       │       ├───bootstrap-treeview
-        │   │       │       │   └───dist
-        │   │       │       ├───chartjs
-        │   │       │       ├───css
-        │   │       │       ├───datatables
-        │   │       │       │   └───1.11.3
-        │   │       │       ├───excanvas
-        │   │       │       │   └───3
-        │   │       │       ├───icons
-        │   │       │       ├───jit
-        │   │       │       │   └───css
-        │   │       │       ├───jqueryui
-        │   │       │       │   └───1.11.2-start
-        │   │       │       │       └───images
-        │   │       │       ├───nivo-slider
-        │   │       │       │   └───3.2
-        │   │       │       │       ├───demo
-        │   │       │       │       └───themes
-        │   │       │       │           ├───default
-        │   │       │       │           └───light
-        │   │       │       └───scripts
-        │   │       └───test-classes
-        │   │           ├───features
-        │   │           ├───starter
-        │   │           │   ├───pages
-        │   │           │   └───stepdefinitios
-        │   │           └───webdriver
-        │   ├───Data Pasien
-        │   │   └───target(17.56)17
-        │   │       ├───classes
-        │   │       ├───failsafe-reports
-        │   │       ├───generated-sources
-        │   │       │   └───annotations
-        │   │       ├───generated-test-sources
-        │   │       │   └───test-annotations
-        │   │       ├───maven-archiver
-        │   │       ├───site
-        │   │       │   └───serenity
-        │   │       │       ├───bootstrap-icons
-        │   │       │       │   ├───font
-        │   │       │       │   │   └───fonts
-        │   │       │       │   └───icons
-        │   │       │       ├───bootstrap-treeview
-        │   │       │       │   └───dist
-        │   │       │       ├───css
-        │   │       │       ├───datatables
-        │   │       │       │   └───1.11.3
-        │   │       │       ├───dygraph
-        │   │       │       │   └───1.1.0
-        │   │       │       ├───excanvas
-        │   │       │       │   └───3
-        │   │       │       ├───icons
-        │   │       │       ├───images
-        │   │       │       ├───jit
-        │   │       │       │   └───css
-        │   │       │       ├───jqtree
-        │   │       │       │   └───0.22
-        │   │       │       ├───jqueryui
-        │   │       │       │   └───1.11.2-start
-        │   │       │       │       └───images
-        │   │       │       ├───nivo-slider
-        │   │       │       │   └───3.2
-        │   │       │       │       ├───demo
-        │   │       │       │       │   ├───images
-        │   │       │       │       │   └───scripts
-        │   │       │       │       └───themes
-        │   │       │       │           ├───bar
-        │   │       │       │           ├───dark
-        │   │       │       │           ├───default
-        │   │       │       │           └───light
-        │   │       │       ├───prism
-        │   │       │       └───scripts
-        │   │       └───test-classes
-        │   │           ├───features
-        │   │           ├───starter
-        │   │           │   └───pages
-        │   │           └───webdriver
-        │   ├───KelolaJadwal
-        │   │   └───target
-        │   │       ├───classes
-        │   │       ├───failsafe-reports
-        │   │       ├───generated-sources
-        │   │       │   └───annotations
-        │   │       ├───generated-test-sources
-        │   │       │   └───test-annotations
-        │   │       ├───maven-archiver
-        │   │       ├───maven-status
-        │   │       │   └───maven-compiler-plugin
-        │   │       │       ├───compile
-        │   │       │       │   └───default-compile
-        │   │       │       └───testCompile
-        │   │       │           └───default-testCompile
-        │   │       ├───site
-        │   │       │   └───serenity
-        │   │       │       ├───bootstrap
-        │   │       │       │   ├───css
-        │   │       │       │   └───fonts
-        │   │       │       ├───bootstrap-icons
-        │   │       │       │   └───icons
-        │   │       │       ├───datatables
-        │   │       │       │   └───1.11.3
-        │   │       │       ├───dygraph
-        │   │       │       │   └───1.1.0
-        │   │       │       ├───icons
-        │   │       │       ├───images
-        │   │       │       ├───jit
-        │   │       │       │   ├───2.0.1
-        │   │       │       │   └───css
-        │   │       │       ├───jqtree
-        │   │       │       │   └───0.22
-        │   │       │       ├───jqueryui
-        │   │       │       │   └───1.11.2-start
-        │   │       │       │       ├───external
-        │   │       │       │       │   └───jquery
-        │   │       │       │       └───images
-        │   │       │       ├───nivo-slider
-        │   │       │       │   └───3.2
-        │   │       │       │       ├───demo
-        │   │       │       │       │   ├───images
-        │   │       │       │       │   └───scripts
-        │   │       │       │       └───themes
-        │   │       │       │           ├───bar
-        │   │       │       │           ├───dark
-        │   │       │       │           ├───default
-        │   │       │       │           └───light
-        │   │       │       └───prism
-        │   │       └───test-classes
-        │   │           ├───features
-        │   │           └───starter
-        │   │               └───stepdefinitios
-        │   ├───Login
-        │   │   └───target(18.23)17
-        │   │       ├───classes
-        │   │       ├───failsafe-reports
-        │   │       ├───generated-sources
-        │   │       │   └───annotations
-        │   │       ├───generated-test-sources
-        │   │       │   └───test-annotations
-        │   │       ├───maven-archiver
-        │   │       ├───maven-status
-        │   │       │   └───maven-compiler-plugin
-        │   │       │       ├───compile
-        │   │       │       │   └───default-compile
-        │   │       │       └───testCompile
-        │   │       │           └───default-testCompile
-        │   │       ├───site
-        │   │       │   └───serenity
-        │   │       │       ├───bootstrap
-        │   │       │       │   ├───css
-        │   │       │       │   ├───fonts
-        │   │       │       │   └───js
-        │   │       │       ├───bootstrap-icons
-        │   │       │       │   ├───font
-        │   │       │       │   │   └───fonts
-        │   │       │       │   └───icons
-        │   │       │       ├───bootstrap-treeview
-        │   │       │       │   └───dist
-        │   │       │       ├───chartjs
-        │   │       │       ├───datatables
-        │   │       │       │   └───1.11.3
-        │   │       │       ├───excanvas
-        │   │       │       │   └───3
-        │   │       │       ├───icons
-        │   │       │       ├───images
-        │   │       │       ├───jit
-        │   │       │       │   ├───2.0.1
-        │   │       │       │   └───css
-        │   │       │       ├───jqtree
-        │   │       │       │   └───0.22
-        │   │       │       ├───jqueryui
-        │   │       │       │   └───1.11.2-start
-        │   │       │       │       └───images
-        │   │       │       ├───prism
-        │   │       │       └───scripts
-        │   │       └───test-classes
-        │   │           ├───features
-        │   │           ├───starter
-        │   │           │   └───pages
-        │   │           └───webdriver
-        │   └───Logout
-        │       └───target(18.23)17
-        │           ├───classes
-        │           ├───failsafe-reports
-        │           ├───generated-sources
-        │           │   └───annotations
-        │           ├───generated-test-sources
-        │           │   └───test-annotations
-        │           ├───maven-archiver
-        │           ├───maven-status
-        │           │   └───maven-compiler-plugin
-        │           │       └───compile
-        │           │           └───default-compile
-        │           ├───site
-        │           │   └───serenity
-        │           │       ├───bootstrap
-        │           │       │   ├───css
-        │           │       │   └───fonts
-        │           │       ├───bootstrap-icons
-        │           │       │   ├───font
-        │           │       │   │   └───fonts
-        │           │       │   └───icons
-        │           │       ├───bootstrap-treeview
-        │           │       │   └───dist
-        │           │       ├───chartjs
-        │           │       ├───css
-        │           │       ├───datatables
-        │           │       │   └───1.11.3
-        │           │       ├───dygraph
-        │           │       │   └───1.1.0
-        │           │       ├───excanvas
-        │           │       │   └───3
-        │           │       ├───icons
-        │           │       ├───images
-        │           │       ├───jit
-        │           │       │   ├───2.0.1
-        │           │       │   └───css
-        │           │       ├───jqtree
-        │           │       │   └───0.22
-        │           │       ├───jqueryui
-        │           │       │   └───1.11.2-start
-        │           │       │       ├───external
-        │           │       │       │   └───jquery
-        │           │       │       └───images
-        │           │       ├───nivo-slider
-        │           │       │   └───3.2
-        │           │       │       ├───demo
-        │           │       │       │   ├───images
-        │           │       │       │   └───scripts
-        │           │       │       └───themes
-        │           │       │           ├───bar
-        │           │       │           ├───dark
-        │           │       │           ├───default
-        │           │       │           └───light
-        │           │       ├───prism
-        │           │       └───scripts
-        │           └───test-classes
-        │               └───features
-        ├───18 Juni 2022 - Sabtu
-        │   └───target
-        │       ├───classes
-        │       ├───failsafe-reports
-        │       ├───generated-sources
-        │       │   └───annotations
-        │       ├───generated-test-sources
-        │       │   └───test-annotations
-        │       ├───maven-archiver
-        │       ├───maven-status
-        │       │   └───maven-compiler-plugin
-        │       │       └───testCompile
-        │       │           └───default-testCompile
-        │       ├───site
-        │       │   └───serenity
-        │       │       ├───bootstrap
-        │       │       │   ├───css
-        │       │       │   ├───fonts
-        │       │       │   └───js
-        │       │       ├───bootstrap-icons
-        │       │       │   └───icons
-        │       │       ├───bootstrap-treeview
-        │       │       │   └───dist
-        │       │       ├───css
-        │       │       ├───datatables
-        │       │       │   └───1.11.3
-        │       │       ├───dygraph
-        │       │       │   └───1.1.0
-        │       │       ├───excanvas
-        │       │       │   └───3
-        │       │       ├───icons
-        │       │       ├───jit
-        │       │       │   ├───2.0.1
-        │       │       │   └───css
-        │       │       ├───jqtree
-        │       │       │   └───0.22
-        │       │       ├───nivo-slider
-        │       │       │   └───3.2
-        │       │       │       ├───demo
-        │       │       │       │   └───images
-        │       │       │       └───themes
-        │       │       │           ├───dark
-        │       │       │           └───light
-        │       │       ├───prism
-        │       │       └───scripts
-        │       └───test-classes
-        │           ├───features
-        │           ├───starter
-        │           │   ├───pages
-        │           │   └───stepdefinitios
-        │           └───webdriver
-        ├───23 Juni 2022 - Kamis
-        │   └───target
-        │       ├───classes
-        │       ├───failsafe-reports
-        │       ├───generated-sources
-        │       │   └───annotations
-        │       ├───generated-test-sources
-        │       │   └───test-annotations
-        │       ├───maven-archiver
-        │       ├───maven-status
-        │       │   └───maven-compiler-plugin
-        │       │       └───testCompile
-        │       │           └───default-testCompile
-        │       ├───site
-        │       │   └───serenity
-        │       │       ├───bootstrap
-        │       │       │   ├───css
-        │       │       │   ├───fonts
-        │       │       │   └───js
-        │       │       ├───bootstrap-icons
-        │       │       │   ├───font
-        │       │       │   │   └───fonts
-        │       │       │   └───icons
-        │       │       ├───bootstrap-treeview
-        │       │       │   └───dist
-        │       │       ├───css
-        │       │       ├───datatables
-        │       │       │   └───1.11.3
-        │       │       ├───dygraph
-        │       │       │   └───1.1.0
-        │       │       ├───icons
-        │       │       ├───images
-        │       │       ├───jit
-        │       │       │   ├───2.0.1
-        │       │       │   └───css
-        │       │       ├───jqtree
-        │       │       │   └───0.22
-        │       │       ├───jqueryui
-        │       │       │   └───1.11.2-start
-        │       │       │       └───images
-        │       │       ├───nivo-slider
-        │       │       │   └───3.2
-        │       │       │       ├───demo
-        │       │       │       │   ├───images
-        │       │       │       │   └───scripts
-        │       │       │       └───themes
-        │       │       │           ├───default
-        │       │       │           └───light
-        │       │       ├───prism
-        │       │       └───scripts
-        │       └───test-classes
-        │           ├───features
-        │           ├───starter
-        │           │   ├───pages
-        │           │   └───stepdefinitios
-        │           └───webdriver
-        ├───24 Juni 2022 - Jumat
-        │   └───target
-        │       ├───classes
-        │       ├───failsafe-reports
-        │       ├───generated-sources
-        │       │   └───annotations
-        │       ├───generated-test-sources
-        │       │   └───test-annotations
-        │       ├───maven-archiver
-        │       ├───site
-        │       │   └───serenity
-        │       │       ├───bootstrap-icons
-        │       │       │   ├───font
-        │       │       │   │   └───fonts
-        │       │       │   └───icons
-        │       │       ├───bootstrap-treeview
-        │       │       │   └───dist
-        │       │       ├───dygraph
-        │       │       │   └───1.1.0
-        │       │       ├───excanvas
-        │       │       │   └───3
-        │       │       ├───icons
-        │       │       ├───images
-        │       │       ├───jit
-        │       │       │   ├───2.0.1
-        │       │       │   └───css
-        │       │       ├───jqtree
-        │       │       │   └───0.22
-        │       │       ├───nivo-slider
-        │       │       │   └───3.2
-        │       │       │       ├───demo
-        │       │       │       │   ├───images
-        │       │       │       │   └───scripts
-        │       │       │       └───themes
-        │       │       │           ├───bar
-        │       │       │           ├───dark
-        │       │       │           └───default
-        │       │       └───prism
-        │       └───test-classes
-        │           ├───features
-        │           ├───starter
-        │           │   ├───pages
-        │           │   └───stepdefinitios
-        │           └───webdriver
-        ├───27 Juni 2022 - Senin
-        │   └───target
-        │       ├───classes
-        │       ├───failsafe-reports
-        │       ├───generated-sources
-        │       │   └───annotations
-        │       ├───generated-test-sources
-        │       │   └───test-annotations
-        │       ├───maven-archiver
-        │       ├───maven-status
-        │       │   └───maven-compiler-plugin
-        │       │       ├───compile
-        │       │       │   └───default-compile
-        │       │       └───testCompile
-        │       │           └───default-testCompile
-        │       ├───site
-        │       │   └───serenity
-        │       │       ├───bootstrap-icons
-        │       │       │   └───icons
-        │       │       ├───bootstrap-treeview
-        │       │       │   └───dist
-        │       │       ├───chartjs
-        │       │       ├───css
-        │       │       ├───datatables
-        │       │       │   └───1.11.3
-        │       │       ├───icons
-        │       │       ├───jit
-        │       │       │   ├───2.0.1
-        │       │       │   └───css
-        │       │       ├───jqtree
-        │       │       │   └───0.22
-        │       │       ├───jqueryui
-        │       │       │   └───1.11.2-start
-        │       │       │       └───images
-        │       │       ├───nivo-slider
-        │       │       │   └───3.2
-        │       │       │       ├───demo
-        │       │       │       │   ├───images
-        │       │       │       │   └───scripts
-        │       │       │       └───themes
-        │       │       │           ├───bar
-        │       │       │           ├───dark
-        │       │       │           ├───default
-        │       │       │           └───light
-        │       │       ├───prism
-        │       │       └───scripts
-        │       └───test-classes
-        │           ├───features
-        │           ├───starter
-        │           │   ├───pages
-        │           │   └───stepdefinitios
-        │           └───webdriver
-        ├───5 Juli 2022
-        │   └───target
-        │       ├───classes
-        │       ├───failsafe-reports
-        │       ├───generated-sources
-        │       │   └───annotations
-        │       ├───generated-test-sources
-        │       │   └───test-annotations
-        │       ├───maven-archiver
-        │       ├───maven-status
-        │       │   └───maven-compiler-plugin
-        │       │       ├───compile
-        │       │       │   └───default-compile
-        │       │       └───testCompile
-        │       │           └───default-testCompile
-        │       ├───site
-        │       │   └───serenity
-        │       │       ├───bootstrap-icons
-        │       │       │   ├───font
-        │       │       │   └───icons
-        │       │       ├───chartjs
-        │       │       ├───datatables
-        │       │       │   └───1.11.3
-        │       │       ├───dygraph
-        │       │       │   └───1.1.0
-        │       │       ├───excanvas
-        │       │       │   └───3
-        │       │       ├───icons
-        │       │       ├───images
-        │       │       ├───jit
-        │       │       │   └───css
-        │       │       ├───jqtree
-        │       │       │   └───0.22
-        │       │       ├───jqueryui
-        │       │       │   └───1.11.2-start
-        │       │       │       ├───external
-        │       │       │       │   └───jquery
-        │       │       │       └───images
-        │       │       ├───nivo-slider
-        │       │       │   └───3.2
-        │       │       │       ├───demo
-        │       │       │       │   ├───images
-        │       │       │       │   └───scripts
-        │       │       │       └───themes
-        │       │       │           ├───bar
-        │       │       │           ├───dark
-        │       │       │           ├───default
-        │       │       │           └───light
-        │       │       └───scripts
-        │       └───test-classes
-        │           ├───features
-        │           ├───starter
-        │           │   ├───pages
-        │           │   └───stepdefinitios
-        │           └───webdriver
-        ├───6 Juli 2022
-        │   └───target
-        │       ├───classes
-        │       ├───failsafe-reports
-        │       ├───generated-sources
-        │       │   └───annotations
-        │       ├───generated-test-sources
-        │       │   └───test-annotations
-        │       ├───maven-archiver
-        │       ├───maven-status
-        │       │   └───maven-compiler-plugin
-        │       │       └───compile
-        │       │           └───default-compile
-        │       ├───site
-        │       │   └───serenity
-        │       │       ├───bootstrap-icons
-        │       │       │   └───icons
-        │       │       ├───chartjs
-        │       │       ├───css
-        │       │       ├───dygraph
-        │       │       │   └───1.1.0
-        │       │       ├───excanvas
-        │       │       │   └───3
-        │       │       ├───images
-        │       │       ├───jit
-        │       │       │   ├───2.0.1
-        │       │       │   └───css
-        │       │       ├───jqueryui
-        │       │       │   └───1.11.2-start
-        │       │       │       └───images
-        │       │       ├───nivo-slider
-        │       │       │   └───3.2
-        │       │       │       ├───demo
-        │       │       │       │   ├───images
-        │       │       │       │   └───scripts
-        │       │       │       └───themes
-        │       │       │           ├───bar
-        │       │       │           ├───dark
-        │       │       │           ├───default
-        │       │       │           └───light
-        │       │       └───prism
-        │       └───test-classes
-        │           ├───features
-        │           ├───starter
-        │           │   ├───pages
-        │           │   └───stepdefinitios
-        │           └───webdriver
-        ├───Code karena ga bisa push dengan git ke git hub
-        │   └───TestingWebUpdate
-        │       ├───.idea
-        │       │   └───codeStyles
-        │       ├───src
-        │       │   ├───main
-        │       │   │   ├───java
-        │       │   │   └───resources
-        │       │   └───test
-        │       │       ├───java
-        │       │       └───resources
-        │       │           └───features
-        │       └───target
-        │           ├───classes
-        │           ├───failsafe-reports
-        │           ├───generated-sources
-        │           │   └───annotations
-        │           ├───generated-test-sources
-        │           │   └───test-annotations
-        │           ├───maven-archiver
-        │           ├───maven-status
-        │           │   └───maven-compiler-plugin
-        │           │       └───testCompile
-        │           │           └───default-testCompile
-        │           ├───site
-        │           │   └───serenity
-        │           │       ├───bootstrap
-        │           │       │   └───css
-        │           │       ├───bootstrap-icons
-        │           │       │   ├───font
-        │           │       │   │   └───fonts
-        │           │       │   └───icons
-        │           │       ├───bootstrap-treeview
-        │           │       │   └───dist
-        │           │       ├───chartjs
-        │           │       ├───excanvas
-        │           │       │   └───3
-        │           │       ├───icons
-        │           │       ├───images
-        │           │       ├───jit
-        │           │       │   ├───2.0.1
-        │           │       │   └───css
-        │           │       ├───jqtree
-        │           │       │   └───0.22
-        │           │       ├───jqueryui
-        │           │       │   └───1.11.2-start
-        │           │       │       ├───external
-        │           │       │       │   └───jquery
-        │           │       │       └───images
-        │           │       └───prism
-        │           └───test-classes
-        │               ├───features
-        │               ├───starter
-        │               │   └───pages
-        │               └───webdriver
-        └───Video
-            ├───Arsip Jadwal
-            ├───Data Dokter
-            ├───Data Pasien
-            │   └───Automatic
-            ├───Kelola Jadwal
-            ├───Login
-            │   ├───Admin
-            │   └───Dokter
-            └───LogOut
+Capstone/
+├── .github/workflows/
+│   ├── api-tests.yml                       # CI pipeline for API tests
+│   ├── web-tests.yml                       # CI pipeline for Web tests
+│   └── mobile-tests.yml                    # CI pipeline for Mobile tests
+│
+├── AutomationApiTesting/                   # REST API Automation
+│   ├── pom.xml
+│   ├── src/test/java/
+│   │   ├── CucumberTestSuite.java
+│   │   ├── utils/
+│   │   │   ├── BaseApi.java               # Common HTTP helpers & assertions
+│   │   │   ├── ConfigManager.java         # Reads config.properties
+│   │   │   ├── DataGenerator.java         # Random test data factory
+│   │   │   ├── TokenManager.java          # In-memory auth token store
+│   │   │   └── TestDataStore.java         # In-memory shared test data
+│   │   └── starter/
+│   │       ├── auth/                       # Login & Register
+│   │       ├── dokter/                     # Doctor CRUD
+│   │       ├── pasien/                     # Patient CRUD
+│   │       ├── jadwal/                     # Schedule CRUD
+│   │       ├── user/                       # User CRUD
+│   │       └── stepdefinitions/            # Cucumber glue
+│   └── src/test/resources/
+│       ├── config.properties               # Base URL & credentials
+│       ├── Authentication/                 # Feature files
+│       ├── DataDokter/
+│       ├── DataPasien/
+│       ├── KelolaJadwal/
+│       └── User/
+│
+├── AutomationWebsiteTesing/                # Web UI Automation
+│   ├── pom.xml
+│   ├── serenity.properties                 # WebDriver & base URL config
+│   ├── src/test/java/
+│   │   ├── CucumberTestSuite.java
+│   │   └── starter/
+│   │       ├── pages/
+│   │       │   ├── LoginPage.java
+│   │       │   ├── DashboardPage.java
+│   │       │   ├── PatientDataPage.java
+│   │       │   ├── DokterDataPage.java
+│   │       │   ├── KelolaJadwalPage.java
+│   │       │   └── ArsipJadwalPage.java
+│   │       └── stepdefinitios/
+│   │           ├── LoginSteps.java
+│   │           ├── PatientDataSteps.java
+│   │           ├── DokterDataSteps.java
+│   │           ├── KelolaJadwalSteps.java
+│   │           └── ArsipJadwalSteps.java
+│   └── src/test/resources/features/       # 20+ feature files
+│
+├── AutomationMobileTesing/                 # Mobile UI Automation
+│   ├── pom.xml
+│   ├── src/main/java/com/example/app/
+│   │   ├── base/
+│   │   │   └── BasePageObject.java        # Common mobile interactions
+│   │   ├── drivers/
+│   │   │   └── AndroidDriverInit.java     # Appium driver setup
+│   │   ├── pages/
+│   │   │   ├── LoginPage.java
+│   │   │   ├── DashboardAdminPage.java
+│   │   │   ├── DashboardDoctorPage.java
+│   │   │   ├── DataDoctorPage.java
+│   │   │   ├── DataPatientPage.java
+│   │   │   ├── ManageSchedulePage.java
+│   │   │   ├── ArchiveSchedulePage.java
+│   │   │   └── ReviewDoctorPage.java
+│   │   └── utils/
+│   │       └── General.java               # Random data generator
+│   ├── src/main/resources/
+│   │   └── appium.properties              # Appium & device config
+│   └── src/test/
+│       ├── java/com/example/
+│       │   ├── acceptancetests/
+│       │   │   └── AcceptanceTestSuite.java
+│       │   ├── hooks/
+│       │   │   └── AndroidDriverHook.java  # Driver lifecycle
+│       │   └── steps/
+│       │       ├── Auth/                   # Login/Logout steps
+│       │       ├── DoctorData/             # Doctor CRUD steps
+│       │       ├── PatientData/            # Patient CRUD steps
+│       │       ├── ManageSchedule/         # Schedule steps
+│       │       ├── ArchiveSchedule/        # Archive steps
+│       │       └── Review/                 # Review steps
+│       └── resources/
+│           ├── application/app-release.apk
+│           └── features/                   # 16 feature files
+│
+└── README.md                               # This file
 ```
 
-## Credits
+## Tech Stack
 
-   Author: Bagas
+| Layer | Tools |
+|-------|-------|
+| API Testing | Java 11, REST Assured, Serenity BDD, Cucumber |
+| Web Testing | Java 11, Selenium WebDriver, Serenity BDD, Cucumber |
+| Mobile Testing | Java 11, Appium, Serenity BDD, Cucumber |
+| Build | Maven |
+| CI/CD | GitHub Actions |
+| Reporting | Serenity BDD Reports |
+
+## CI/CD Pipelines
+
+Three GitHub Actions workflows are configured:
+
+| Workflow | File | Trigger |
+|----------|------|---------|
+| API Tests | `.github/workflows/api-tests.yml` | Push/PR to `AutomationApiTesting/` |
+| Web Tests | `.github/workflows/web-tests.yml` | Push/PR to `AutomationWebsiteTesing/` |
+| Mobile Tests | `.github/workflows/mobile-tests.yml` | Push/PR to `AutomationMobileTesing/` |
+
+All workflows can also be triggered manually via the Actions tab (`workflow_dispatch`).
+
+> **Note**: The backend server (Heroku) and web app (Netlify) are no longer active.
+> CI pipelines will compile successfully but tests will fail at runtime due to connection timeouts.
+> This is expected behavior — the workflows are structured correctly and will pass once a live environment is available.
+> To point to a new server, update the config files in each project (see individual README files).
+
+## Quick Start
+
+### Prerequisites
+- Java 11+
+- Maven 3.x
+- Chrome (for web tests)
+- Android SDK + Appium (for mobile tests)
+
+### Run API tests
+```bash
+cd AutomationApiTesting
+mvn clean verify
+```
+
+### Run Web tests
+```bash
+cd AutomationWebsiteTesing
+mvn clean verify
+```
+
+### Run Mobile tests
+```bash
+# Start Appium server first
+appium
+
+# Then run tests
+cd AutomationMobileTesing
+mvn clean verify
+```
+
+## Test Coverage
+
+| Module | API | Web | Mobile |
+|--------|-----|-----|--------|
+| Login/Auth | ✅ | ✅ | ✅ |
+| Logout | - | ✅ | ✅ |
+| Doctor CRUD | ✅ | ✅ | ✅ |
+| Patient CRUD | ✅ | ✅ | ✅ |
+| Schedule | ✅ | ✅ | ✅ |
+| Archive | - | ✅ | ✅ |
+| Doctor Review | - | - | ✅ |
+| User Management | ✅ | - | - |
+
+## Configuration Files
+
+| Project | Config File | Purpose |
+|---------|-------------|---------|
+| API | `src/test/resources/config.properties` | Base URL, credentials |
+| Web | `serenity.properties` | WebDriver, base URL |
+| Mobile | `src/main/resources/appium.properties` | Appium URL, device caps |
+
+## Refactoring Highlights
+
+This project has been refactored from its original 2022 state with the following improvements:
+
+- **Externalized configuration** — No more hardcoded URLs, credentials, or file paths
+- **Eliminated code duplication** — Helper classes and base objects reduce repetition
+- **Proper Java conventions** — Lowercase package names, clean imports
+- **In-memory state management** — Replaced file-based token/data sharing (API project)
+- **Removed Thread.sleep** — Proper waits via frameworks (Web/Mobile)
+- **Fixed broken assertions** — Assertions that previously did nothing now actually verify
+- **Cleaned dependencies** — Removed unused/deprecated libraries
+- **Added documentation** — README per project + this root README
+- **CI/CD ready** — GitHub Actions workflows for all three test suites
+
+## Individual Documentation
+
+Each sub-project has its own detailed README:
+- [API Testing README](AutomationApiTesting/README.md)
+- [Web Testing README](AutomationWebsiteTesing/README.md)
+- [Mobile Testing README](AutomationMobileTesing/README.md)
