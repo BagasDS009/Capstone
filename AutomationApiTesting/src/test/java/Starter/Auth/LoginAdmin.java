@@ -1,155 +1,60 @@
-package Starter.Auth;
+package starter.auth;
 
-import Utils.General;
-import io.restassured.response.Response;
-import net.serenitybdd.rest.SerenityRest;
+import utils.BaseApi;
+import utils.ConfigManager;
+import utils.DataGenerator;
+import utils.TokenManager;
 import net.thucydides.core.annotations.Step;
 import org.json.simple.JSONObject;
-import java.io.FileWriter;
-import java.io.IOException;
-import static net.serenitybdd.rest.SerenityRest.restAssuredThat;
-import static org.hamcrest.Matchers.comparesEqualTo;
-import static org.hamcrest.Matchers.equalTo;
 
-public class LoginAdmin {
+public class LoginAdmin extends BaseApi {
 
-    String username, password;
-    General general = new General();
-    protected static String base_url = "https://springboot-postgresql-capstone.herokuapp.com/";
+    private String endpoint() {
+        return baseUrl() + "api/auth/login/";
+    }
 
     @Step("I set an endpoint for login account admin")
     public String setEndpointLoginAccountAdmin() {
-        return base_url + "api/auth/login/";
+        return endpoint();
     }
 
-    @Step("I request {String} get detail account admin")
-    public void requestLoginAccountAdmin(String field) throws Exception {
+    @Step("I request {0} for login account admin")
+    public void requestLoginAccountAdmin(String field) {
+        String username = ConfigManager.getAdminUsername();
+        String password = ConfigManager.getAdminPassword();
+        String role = ConfigManager.getAdminRole();
+
         switch (field) {
-            case "emptyUser":
-                JSONObject requestBody = new JSONObject();
-
-                requestBody.put("username", "");
-                requestBody.put("password", "admin123");
-                requestBody.put("role", "ROLE_ADMIN");
-
-                SerenityRest.given().header("Content-Type", "application/json")
-                        .body(requestBody.toJSONString()).post(setEndpointLoginAccountAdmin());
-                break;
-            case "emptyPass":
-                requestBody = new JSONObject();
-
-                requestBody.put("username", "admin");
-                requestBody.put("password", "");
-                requestBody.put("role", "ROLE_ADMIN");
-
-                SerenityRest.given().header("Content-Type", "application/json")
-                        .body(requestBody.toJSONString()).post(setEndpointLoginAccountAdmin());
-                break;
-            case "emptyRole":
-                requestBody = new JSONObject();
-
-                requestBody.put("username", "admin");
-                requestBody.put("password", "admin123");
-                requestBody.put("role", "");
-
-                SerenityRest.given().header("Content-Type", "application/json")
-                        .body(requestBody.toJSONString()).post(setEndpointLoginAccountAdmin());
-                break;
-            case "emptyAll":
-                requestBody = new JSONObject();
-
-                requestBody.put("username", "");
-                requestBody.put("password", "");
-                requestBody.put("role", "");
-
-                SerenityRest.given().header("Content-Type", "application/json")
-                        .body(requestBody.toJSONString()).post(setEndpointLoginAccountAdmin());
-                break;
-            case "nullAll":
-                requestBody = new JSONObject();
-
-                requestBody.put("username", null);
-                requestBody.put("password", null);
-                requestBody.put("role", "ROLE_ADMIN");
-
-                SerenityRest.given().header("Content-Type", "application/json")
-                        .body(requestBody.toJSONString()).post(setEndpointLoginAccountAdmin());
-                break;
-            case "invalidUser":
-                requestBody = new JSONObject();
-
-                requestBody.put("username", this.username = General.randomUsername());
-                requestBody.put("password", "admin123");
-                requestBody.put("role", "ROLE_ADMIN");
-
-                SerenityRest.given().header("Content-Type", "application/json")
-                        .body(requestBody.toJSONString()).post(setEndpointLoginAccountAdmin());
-                break;
-            case "invalidPass":
-                requestBody = new JSONObject();
-
-                requestBody.put("username", "admin");
-                requestBody.put("password", this.password = General.randomPassword());
-                requestBody.put("role", "ROLE_ADMIN");
-
-                SerenityRest.given().header("Content-Type", "application/json")
-                        .body(requestBody.toJSONString()).post(setEndpointLoginAccountAdmin());
-                break;
-            case "invalidRole":
-                requestBody = new JSONObject();
-
-                requestBody.put("username", "admin");
-                requestBody.put("password", "admin123");
-                requestBody.put("role", "ROLES");
-
-                SerenityRest.given().header("Content-Type", "application/json")
-                        .body(requestBody.toJSONString()).post(setEndpointLoginAccountAdmin());
-                break;
-            case "invalidAll":
-                requestBody = new JSONObject();
-
-                requestBody.put("username", this.username = General.randomUsername());
-                requestBody.put("password", this.password = General.randomPassword());
-                requestBody.put("role", "ROLES");
-
-                SerenityRest.given().header("Content-Type", "application/json")
-                        .body(requestBody.toJSONString()).post(setEndpointLoginAccountAdmin());
-                break;
-            default:
-                requestBody = new JSONObject();
-
-                requestBody.put("username", "admin");
-                requestBody.put("password", "admin123");
-                requestBody.put("role", "ROLE_ADMIN");
-
-                SerenityRest.given().header("Content-Type", "application/json")
-                        .body(requestBody.toJSONString()).post(setEndpointLoginAccountAdmin());
-                break;
+            case "emptyUser":  postLogin("", password, role); break;
+            case "emptyPass":  postLogin(username, "", role); break;
+            case "emptyRole":  postLogin(username, password, ""); break;
+            case "emptyAll":   postLogin("", "", ""); break;
+            case "nullAll":    postLogin(null, null, role); break;
+            case "invalidUser": postLogin(DataGenerator.username(), password, role); break;
+            case "invalidPass": postLogin(username, DataGenerator.password(), role); break;
+            case "invalidRole": postLogin(username, password, "ROLES"); break;
+            case "invalidAll":  postLogin(DataGenerator.username(), DataGenerator.password(), "ROLES"); break;
+            default: postLogin(username, password, role); break;
         }
     }
 
-    @Step("I validate the status code for login admin is {int}")
+    @Step("I validate the status code for login admin is {0}")
     public void validateTheStatusCodeForLoginAdmin(int statusCode) {
-        SerenityRest.then().statusCode(equalTo(statusCode));
+        validateStatusCode(statusCode);
     }
 
     @Step("validate the data detail after login account admin")
     public void validateTheDataDetailAfterLoginAccountAdmin(String message) {
         if (message.equals("success")) {
-            Response responseRatings = SerenityRest.lastResponse();
-            String token = responseRatings.jsonPath().getString("token");
-            System.out.println(token);
-            try (FileWriter file = new FileWriter("src/test/resources/filejson/tokenAdmin.json")) {
-                file.write(token);
-                file.flush();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            comparesEqualTo("");
+            String token = getResponseValue("token");
+            TokenManager.setAdminToken(token);
         } else if (message.equals("badRequest")) {
-            restAssuredThat(response -> response.body("error", equalTo("Bad Request")));
-        } else {
-            comparesEqualTo("");
+            validateBadRequestResponse();
         }
+    }
+
+    private void postLogin(String username, String password, String role) {
+        JSONObject body = buildBody("username", username, "password", password, "role", role);
+        publicRequest().body(body.toJSONString()).post(endpoint());
     }
 }

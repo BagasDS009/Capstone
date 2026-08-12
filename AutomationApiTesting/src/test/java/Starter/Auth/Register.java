@@ -1,105 +1,67 @@
-package Starter.Auth;
+package starter.auth;
 
-import Utils.General;
-import io.restassured.response.Response;
-import net.serenitybdd.rest.SerenityRest;
+import utils.BaseApi;
+import utils.DataGenerator;
+import utils.TestDataStore;
 import net.thucydides.core.annotations.Step;
-import org.apache.commons.io.FileUtils;
 import org.json.simple.JSONObject;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import static net.serenitybdd.rest.SerenityRest.restAssuredThat;
-import static org.hamcrest.Matchers.comparesEqualTo;
-import static org.hamcrest.Matchers.equalTo;
 
-public class Register {
-    String username,password,usernameUsed;
-    General general = new General();
-    protected static String base_url = "https://springboot-postgresql-capstone.herokuapp.com/";
+public class Register extends BaseApi {
 
-    @Step("I set an endpoint for register account")
-    public String setEndpointRegister(){
-        return base_url + "api/auth/register/";
+    private String endpoint() {
+        return baseUrl() + "api/auth/register/";
     }
 
-    @Step("I request {String} get detail regis new account")
-    public void requestRegisterNewAccount(String field)throws Exception{
+    @Step("I set an endpoint for register")
+    public String setEndpointRegister() {
+        return endpoint();
+    }
+
+    @Step("I request {0} for register new account")
+    @SuppressWarnings("unchecked")
+    public void requestRegisterNewAccount(String field) {
         switch (field) {
             case "emptyAll":
-                JSONObject requestBody = new JSONObject();
-
-                requestBody.put("username", "");
-                requestBody.put("password", "");
-
-                SerenityRest.given().header("Content-Type", "application/json")
-                        .body(requestBody.toJSONString()).post(setEndpointRegister());
+                postRegister("", "");
                 break;
             case "nullAll":
-                requestBody = new JSONObject();
-
-                requestBody.put("username", null);
-                requestBody.put("password", null);
-
-                SerenityRest.given().header("Content-Type", "application/json")
-                        .body(requestBody.toJSONString()).post(setEndpointRegister());
+                postRegister(null, null);
                 break;
-
-            case "invalidUser":
-                requestBody = new JSONObject();
-
-                requestBody.put("username", new String[]{usernameUsed});
-                requestBody.put("password", "sasa123");
-
-                usernameUsed = FileUtils.readFileToString(new File(System.getProperty("user.dir") + "//src//test//resources//filejson//usedUsername.json"), StandardCharsets.UTF_8);
-                SerenityRest.given().header("Content-Type", "application/json")
-                        .body(requestBody.toJSONString()).post(setEndpointRegister());
+            case "invalidUser": {
+                String usedUsername = TestDataStore.has(TestDataStore.USED_USERNAME)
+                        ? TestDataStore.get(TestDataStore.USED_USERNAME) : "admin";
+                JSONObject body = new JSONObject();
+                body.put("username", new String[]{usedUsername});
+                body.put("password", "sasa123");
+                publicRequest().body(body.toJSONString()).post(endpoint());
                 break;
+            }
             default:
-                requestBody = new JSONObject();
-
-                requestBody.put("username", this.username = General.randomUsername());
-                requestBody.put("password", this.password = General.randomPassword());
-
-                SerenityRest.given().header("Content-Type", "application/json")
-                        .body(requestBody.toJSONString()).post(setEndpointRegister());
+                postRegister(DataGenerator.username(), DataGenerator.password());
                 break;
         }
     }
 
-    @Step("I validate the status code for register new account is {int}")
+    @Step("I validate the status code for register new account is {0}")
     public void validateTheStatusCodeForRegisterNewAccount(int statusCode) {
-        SerenityRest.then().statusCode(equalTo(statusCode));
+        validateStatusCode(statusCode);
     }
 
-    @Step("validate the data detail after create new account")
+    @Step("validate the data detail after register new account")
     public void validateTheDataDetailAfterRegisterNewAccount(String message) {
         if (message.equals("success")) {
-            Response responseRatings = SerenityRest.lastResponse();
-            String idUsername = responseRatings.jsonPath().getString("data.id");
-            System.out.println(idUsername);
-            try (FileWriter file = new FileWriter("src/test/resources/filejson/idUserNew.json")) {
-                file.write(idUsername);
-                file.flush();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            responseRatings = SerenityRest.lastResponse();
-            String newUsername = responseRatings.jsonPath().getString("data.username");
-            System.out.println(newUsername);
-            try (FileWriter file = new FileWriter("src/test/resources/filejson/usedUsername.json")) {
-                file.write(newUsername);
-                file.flush();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            restAssuredThat(response -> response.body("responseCode", equalTo("SUCCESS")));
-            restAssuredThat(response -> response.body("message", equalTo("Success!")));
+            String userId = getResponseValue("data.id");
+            String newUsername = getResponseValue("data.username");
+            TestDataStore.set(TestDataStore.ID_USER_NEW, userId);
+            TestDataStore.set(TestDataStore.USED_USERNAME, newUsername);
+            validateSuccessResponse();
         } else if (message.equals("badRequest")) {
-            restAssuredThat(response -> response.body("error", equalTo("Bad Request")));
-        } else {
-            comparesEqualTo("");
+            validateBadRequestResponse();
         }
+    }
+
+    private void postRegister(String username, String password) {
+        JSONObject body = buildBody("username", username, "password", password);
+        publicRequest().body(body.toJSONString()).post(endpoint());
     }
 }

@@ -1,3 +1,25 @@
-# Project exclude paths
-.idea
-target
+# === Build & IDE ===
+target/
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+
+# === OS ===
+.DS_Store
+Thumbs.db
+
+# === Dynamic test data (tokens, IDs generated at runtime) ===
+src/test/resources/filejson/
+
+# === Maven ===
+*.class
+*.jar
+*.war
+*.log
+dependency-reduced-pom.xml
+
+# === Serenity Reports (can be regenerated) ===
+# Uncomment below if you don't want reports in version control:
+# target/site/serenity/
